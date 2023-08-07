@@ -1,0 +1,71 @@
+@extends('layouts.admin')
+@section('content')
+
+<div class="card">
+    <div class="card-header">
+        {{ trans('global.show') }} {{ trans('cruds.idioma.title') }}
+    </div>
+
+    <div class="card-body">
+        <div class="form-group">
+            <div class="form-group">
+                <a class="btn btn-default" href="{{ route('admin.idiomas.index') }}">
+                    {{ trans('global.back_to_list') }}
+                </a>
+            </div>
+            <table class="table table-bordered table-striped">
+                <tbody>
+                    <tr>
+                        <th>
+                            {{ trans('cruds.idioma.fields.id') }}
+                        </th>
+                        <td>
+                            {{ $idioma->id }}
+                        </td>
+                    </tr>
+                    <tr>
+                        <th>
+                            {{ trans('cruds.idioma.fields.codigo') }}
+                        </th>
+                        <td>
+                            {{ $idioma->codigo }}
+                        </td>
+                    </tr>
+                    <tr>
+                        <th>
+                            {{ trans('cruds.idioma.fields.texto') }}
+                        </th>
+                        <td>
+                            {{ $idioma->texto }}
+                        </td>
+                    </tr>
+                    <tr>
+                        <th>
+                            {{ trans('cruds.idioma.fields.lang') }}
+                        </th>
+                        <td>
+                            {{ $idioma->lang }}
+                        </td>
+                    </tr>
+                    <tr>
+                        <th>
+                            {{ trans('cruds.idioma.fields.posicion') }}
+                        </th>
+                        <td>
+                            {{ $idioma->posicion }}
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+            <div class="form-group">
+                <a class="btn btn-default" href="{{ route('admin.idiomas.index') }}">
+                    {{ trans('global.back_to_list') }}
+                </a>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+@endsection
