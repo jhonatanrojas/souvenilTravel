@@ -1,7 +1,15 @@
 <?php
 
-Route::view('/', 'welcome');
+Route::get('/', 'HomeController@index')->name('home');
 Auth::routes(['register' => false]);
+
+//GRUPO DE FRONT
+Route::group(['as' => '/', 'namespace' => 'Frontend' ], function () {
+   // Route::resource('clientes', 'ClientesController')->name('create');
+    Route::get('cliente/registrar', 'ClientesController@create')->name('registraCliente');
+    Route::get('cliente/perfil', 'ClientesController@show')->name('perfilCliente');
+    Route::get('paquetes', 'HomeController@home')->name('paquetes');
+});
 
 Route::group(['prefix' => 'admin', 'as' => 'admin.', 'namespace' => 'Admin', 'middleware' => ['auth', 'admin']], function () {
     Route::get('/', 'HomeController@index')->name('home');
@@ -139,6 +147,8 @@ Route::group(['prefix' => 'profile', 'as' => 'profile.', 'namespace' => 'Auth', 
         Route::post('profile/destroy', 'ChangePasswordController@destroy')->name('password.destroyProfile');
     }
 });
+
+/*
 Route::group(['as' => 'frontend.', 'namespace' => 'Frontend', 'middleware' => ['auth']], function () {
     Route::get('/home', 'HomeController@index')->name('home');
 
@@ -259,4 +269,4 @@ Route::group(['as' => 'frontend.', 'namespace' => 'Frontend', 'middleware' => ['
     Route::post('frontend/profile', 'ProfileController@update')->name('profile.update');
     Route::post('frontend/profile/destroy', 'ProfileController@destroy')->name('profile.destroy');
     Route::post('frontend/profile/password', 'ProfileController@password')->name('profile.password');
-});
+});*/

@@ -58,7 +58,27 @@
                         {{ $errors->first('grupo') }}
                     </div>
                 @endif
-                <span class="help-block">{{ trans('cruds.enlace.fields.grupo_helper') }}</span>
+                <span class="help-block">{{ trans('Orden') }}</span>
+            </div>
+            <div class="form-group">
+                <label class="required" for="orden">{{ trans('cruds.enlace.fields.orden') }}</label>
+                <input class="form-control {{ $errors->has('orden') ? 'is-invalid' : '' }}" type="number" name="orden" id="orden" value="{{ old('orden',$enlace->orden) }}" required>
+                @if($errors->has('orden'))
+                    <div class="invalid-feedback">
+                        {{ $errors->first('orden') }}
+                    </div>
+                @endif
+                <span class="help-block">{{ trans('Orden') }}</span>
+            </div>
+            <div class="form-group">
+                <label class="required" for="icono">{{ trans('cruds.enlace.fields.icono') }}</label>
+                <input class="form-control {{ $errors->has('icono') ? 'is-invalid' : '' }}" type="text" name="icono" id="icono" value="{{ old('icono', $enlace->icono) }}" required>
+                @if($errors->has('icono'))
+                    <div class="invalid-feedback">
+                        {{ $errors->first('icono') }}
+                    </div>
+                @endif
+                <span class="help-block">{{ trans('icono') }}</span>
             </div>
             <div class="form-group">
                 <button class="btn btn-danger" type="submit">

@@ -4,8 +4,10 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 
+
 class HomeController extends Controller
 {
+    public $templatePath;
     /**
      * Create a new controller instance.
      *
@@ -13,7 +15,8 @@ class HomeController extends Controller
      */
     public function __construct()
     {
-        $this->middleware('auth');
+        //$this->middleware('auth');
+        $this->templatePath = 'frontend';
     }
 
     /**
@@ -23,6 +26,21 @@ class HomeController extends Controller
      */
     public function index()
     {
-        return view('home');
+
+
+
+        $viewHome = $this->templatePath . '.screen.home';
+        $layoutPage = 'home';
+
+        return view(
+            $viewHome,
+            array(
+                'title'       => 'Inicio',
+                'keyword'     => 'palablas clave',
+                'description' => 'descripcion',
+
+                'layout_page' => $layoutPage,
+            )
+        );
     }
 }

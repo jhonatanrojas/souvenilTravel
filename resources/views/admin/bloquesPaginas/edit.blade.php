@@ -62,7 +62,7 @@
             </div>
             <div class="form-group">
                 <label for="conetenido">{{ trans('cruds.bloquesPagina.fields.conetenido') }}</label>
-                <textarea class="form-control ckeditor {{ $errors->has('conetenido') ? 'is-invalid' : '' }}" name="conetenido" id="conetenido">{!! old('conetenido', $bloquesPagina->conetenido) !!}</textarea>
+                <textarea class="form-control  {{ $errors->has('conetenido') ? 'is-invalid' : '' }}" name="conetenido" id="conetenido">{!! old('conetenido', $bloquesPagina->conetenido) !!}</textarea>
                 @if($errors->has('conetenido'))
                     <div class="invalid-feedback">
                         {{ $errors->first('conetenido') }}

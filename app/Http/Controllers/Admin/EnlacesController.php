@@ -39,7 +39,7 @@ class EnlacesController extends Controller
     public function edit(Enlace $enlace)
     {
         abort_if(Gate::denies('enlace_edit'), Response::HTTP_FORBIDDEN, '403 Forbidden');
-
+     
         return view('admin.enlaces.edit', compact('enlace'));
     }
 

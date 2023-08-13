@@ -27,6 +27,8 @@ class Enlace extends Model
     protected $fillable = [
         'nombre',
         'url',
+        'orden',
+        'icono',
         'target',
         'grupo',
         'created_at',
