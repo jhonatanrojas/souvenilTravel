@@ -1,11 +1,43 @@
+@php
+$banners =getBanner('banner_buscador');
+$url_image=asset('template/img/hero_3.jpg');
+
+@endphp
+
+@foreach($banners as $key => $banner)
+@if($banner->imagen)
+
+@php
+$url_image=$banner->imagen->getUrl();
+break;
+@endphp
+
+@endif
+@endforeach
+
+
+
+<style>
+#search_container_2 {
+	position: relative;
+	height: 580px;
+	background: #ccc url({{$url_image}}) no-repeat center top;
+	background-size: cover;
+	color: #fff;
+	width: 100%;
+	display: table;
+	z-index: 99;
+}
+</style>
 
 <div id="search_container_2">
     <div id="search_2">
         <ul class="nav nav-tabs">
-            <li><a href="#tours" data-bs-toggle="tab" class="active show" id="tab_bt_1"><span>Tours</span></a>
+            <li><a href="#tours" data-bs-toggle="tab" class="active show" id="tab_bt_1"><span>Paquetes turisticos</span></a>
             </li>
-            <li><a href="#hotels" data-bs-toggle="tab" id="tab_bt_2"><span>Hotels</a></li>
-            <li><a href="#restaurants" data-bs-toggle="tab" id="tab_bt_3"><span>Restaurants</span></a></li>
+            <li><a href="#tours" data-bs-toggle="tab" class=" " id="tab_bt_1"><span>Arma tu Tours</span></a>
+                <li><a href="#hotels" data-bs-toggle="tab" id="tab_bt_2"><span>Hospedajes</a></li>
+
         </ul>
 
         <div class="tab-content">
@@ -14,35 +46,35 @@
                     <div class="row g-0 custom-search-input-2">
                         <div class="col-lg-4">
                             <div class="form-group">
-                                <input class="form-control" type="text" placeholder="Where..." id="autocomplete">
+                                <input class="form-control" type="text" placeholder="Destino" id="autocomplete">
                                 <i class="icon_pin_alt"></i>
                             </div>
                         </div>
                         <div class="col-lg-3">
                             <div class="form-group">
                                 <input class="form-control date-pick" type="text" name="dates"
-                                    placeholder="When..">
+                                    placeholder="Cuaando">
                                 <i class="icon_calendar"></i>
                             </div>
                         </div>
                         <div class="col-lg-3">
                             <div class="panel-dropdown">
-                                <a href="#">Guests <span class="qtyTotal tours">1</span></a>
+                                <a href="#">Huspedes <span class="qtyTotal tours">1</span></a>
                                 <div class="panel-dropdown-content">
                                     <!-- Quantity Buttons -->
                                     <div class="qtyButtons tours">
-                                        <label>Adults</label>
+                                        <label>Adultos</label>
                                         <input type="text" name="qtyInput_tours" value="1">
                                     </div>
                                     <div class="qtyButtons tours">
-                                        <label>Childrens</label>
+                                        <label>Niños</label>
                                         <input type="text" name="qtyInput_tours" value="0">
                                     </div>
                                 </div>
                             </div>
                         </div>
                         <div class="col-lg-2">
-                            <input type="submit" class="btn_search" value="Search">
+                            <input type="submit" class="btn_search" value="Buscar">
                         </div>
                     </div>
                     <!-- /row -->

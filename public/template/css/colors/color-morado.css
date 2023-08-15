@@ -1,0 +1,160 @@
+/*Typography and buttons*/
+h2 span, h3 span, h4 span, h5 span, h6 span{color:#00ADC3;}
+
+a.button_intro, .button_intro  {background: #00ADC3;}
+
+a.button_intro:hover, .button_intro:hover {color:#00ADC3 !important;}
+
+a.button_intro:hover, .button_intro:hover {color:#00ADC3;}
+
+a.button_drop, .button_drop  {color:#00ADC3 !important;}
+a.button_drop.outilne, .button_drop.outline  {color:#00ADC3;}
+
+a.btn_1, .btn_1{background: #00ADC3;}
+a.btn_1.white, .btn_1.white  {color:#00ADC3;}
+
+a.btn_1.outline:hover,.btn_1.outiline:hover, input .btn_1.outiline:hover{background:#00ADC3;border:2px solid #00ADC3;}
+a.btn_1:hover, .btn_1:hover {background: #333;}
+
+a.btn_map{background: #00ADC3;}
+
+a {color: #00ADC3;}
+
+#search .btn_1.green{background: #00ADC3;}
+
+/* Header */
+header#colored.sticky{background-color:#00ADC3; border-bottom:2px solid #00ADC3}
+
+.dropdown-cart .dropdown-menu{border-top: 2px solid #00ADC3;}
+.dropdown-cart .dropdown-menu:before {border-bottom-color: #00ADC3;}
+
+ul#cart_items li strong > a:hover{color:#00ADC3;}
+
+ul#top_links a{
+	color:#fff;
+}
+ul#top_links a:hover{
+	color:#00ADC3;
+}
+
+ul#top_tools a{ color:#fff;}
+ul#top_tools a:hover {color:#00ADC3;}
+
+ .dropdown-mini .dropdown-menu {
+    border-top: 2px solid #00ADC3;
+}
+ .dropdown-mini .dropdown-menu:before {
+	border-bottom-color: #00ADC3;
+}
+ .dropdown-mini .dropdown-menu ul#lang_menu li a{
+	 color:#555 !important;
+}
+
+ .dropdown-mini .dropdown-menu ul#lang_menu li a:hover{
+	 color:#00ADC3 !important;
+}
+
+a.cart_bt strong {background-color: #00ADC3;}
+
+/* Content and common */
+#search .nav-tabs > li.active > a,
+#search .nav-tabs > li.active > a:hover,
+#search .nav-tabs > li.active > a:focus {
+  background-color: #00ADC3;
+ } 
+ 
+.cbp_tmtimeline:before {
+	background: #00ADC3 !important;
+}
+.cbp_tmtimeline > li .cbp_tmicon {
+	color: #00ADC3 !important;
+	box-shadow: 0 0 0 3px #00ADC3 !important;
+}
+
+.input-group button:hover, .input-group button:focus {background-color:#00ADC3; border-color:#00ADC3}
+
+.other_tours ul li a:hover{color:#00ADC3;}
+
+.bs-wizard > .bs-wizard-step > .bs-wizard-dot:after {background: #00ADC3;} 
+.form_title h3 strong{background-color:#00ADC3;}
+.features-content {background-color: #00ADC3;}
+#Img_carousel .sp-selected-thumbnail {border-bottom: 2px solid #00ADC3;}
+
+
+#directions { background-color:#00ADC3; }
+
+ul.list_ok li:before {color:#00ADC3;}
+ul.list_order li span {background-color:#00ADC3;}
+
+.tooltip-back {background: #00ADC3;}
+.tooltip-content-flip .tooltip-front::after, .tooltip-content-flip .tooltip-back::after {
+	border-top: 10px solid #00ADC3;
+}
+
+.banner h4{color:#00ADC3;}
+.banner.colored{background:#00ADC3 url(../../img/banner_bg_colored.png) no-repeat center bottom;}
+
+/* Menu */
+/*First level styles */					
+.main-menu > ul > li:hover > a {color: #00ADC3;}
+.main-menu ul ul:before{border-bottom-color: #00ADC3;}
+
+.sticky .main-menu > ul > li > a {color: #333;}
+.sticky .main-menu > ul > li:hover > a {color: #00ADC3;}
+
+/* Submenu */
+.main-menu ul ul,
+.main-menu ul .menu-wrapper {border-top: 2px solid #00ADC3;}
+.main-menu ul ul li:hover > a {color:#00ADC3;}
+
+.search-overlay-menu .search-overlay-close:hover, .search-overlay-menu form button:hover {
+	color: #00ADC3;
+}
+
+@media only screen and (max-width: 991px) {
+/* Menu */
+.main-menu ul li a:hover,
+a.show-submenu:hover,
+a.show-submenu:focus,
+a.show-submenu-mega:hover,
+a.show-submenu-mega:focus{color:#00ADC3 !important;}	
+
+.main-menu ul ul,
+.main-menu ul .menu-wrapper {border-top: none;}
+}
+
+@media only screen and (min-width: 992px) {
+.main-menu ul ul, .main-menu ul li .menu-wrapper {border-top: 2px solid #00ADC3;}
+}
+
+/*-------- Checkbox/radio style --------*/
+.container_check input:checked ~ .checkmark {
+  background-color: #00ADC3;
+}
+.container_radio .checkmark:after {
+  background: #00ADC3;
+}
+
+/*-------- Map --------*/
+.btn_infobox_get_directions, a.btn_infobox_phone{color:#00ADC3;}
+a.btn_infobox, .btn_infobox{background-color: #00ADC3;}
+.view_on_map:before {color: #00ADC3;}
+
+#map_filter ul li a:hover,
+#map_filter ul li a.active {color: #00ADC3;}
+
+/*-------- Shop --------*/
+.shop-item .image-box .item-options .btn_shop:hover{
+	background:#00ADC3!important;
+}
+.prod-tabs .tab-btns .tab-btn.active-btn {
+    color: #00ADC3!important;;
+}
+.btn_cart_outine:hover{
+	background:#00ADC3;
+	border:2px solid #00ADC3;
+}
+
+.card-header a .indicator {
+    color: #00ADC3;
+}

@@ -8,7 +8,9 @@ Route::group(['as' => '/', 'namespace' => 'Frontend' ], function () {
    // Route::resource('clientes', 'ClientesController')->name('create');
     Route::get('cliente/registrar', 'ClientesController@create')->name('registraCliente');
     Route::get('cliente/perfil', 'ClientesController@show')->name('perfilCliente');
-    Route::get('paquetes', 'HomeController@home')->name('paquetes');
+
+    Route::get('paquete-turistico/{id}', 'PaquetesController@show')->name('ver_paquete');
+    Route::get('paquetes-turisticos', 'PaquetesController@index')->name('lista_paquetes');
 });
 
 Route::group(['prefix' => 'admin', 'as' => 'admin.', 'namespace' => 'Admin', 'middleware' => ['auth', 'admin']], function () {

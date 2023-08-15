@@ -35,6 +35,7 @@ class Product extends Model implements HasMedia
         'estado_id',
         'nro_adultos',
         'nro_ninos',
+        'destacado',
         'destino_id',
         'direccion',
         'diponible_desde',
@@ -116,4 +117,12 @@ class Product extends Model implements HasMedia
     {
         return $this->belongsTo(ProductCategory::class, 'category_id');
     }
+
+    public const DESTACADO_SELECT = [
+        'sin_valor'        => 'Sin valor',
+        'popular' => 'POPULAR',
+        'recomendados'        => 'Mejor Valorado',
+
+    ];
 }
+ 

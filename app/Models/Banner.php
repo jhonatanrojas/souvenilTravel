@@ -22,6 +22,10 @@ class Banner extends Model implements HasMedia
 
     public const UBICACION_SELECT = [
         'principal' => 'principal',
+        'banner_buscador' => 'banner_buscador',
+        'banner_detalle_paquete' => 'banner_detalle_paquete',
+        'banner_lista_paquete' => 'banner_lista_paquete',
+        'banner_detalle_hospedajes' => 'banner_detalle_hospedajes',
     ];
 
     protected $dates = [
