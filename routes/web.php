@@ -1,15 +1,31 @@
 <?php
 
+use App\Http\Controllers\Frontend\ClientesController;
+
 Route::get('/', 'HomeController@index')->name('home');
 Auth::routes(['register' => false]);
 
 //GRUPO DE FRONT
-Route::group(['as' => '/', 'namespace' => 'Frontend' ], function () {
-   // Route::resource('clientes', 'ClientesController')->name('create');
-    Route::get('cliente/registrar', 'ClientesController@create')->name('registraCliente');
-    Route::get('cliente/perfil', 'ClientesController@show')->name('perfilCliente');
+Route::group(['prefix' => 'cliente', 'namespace' => 'Frontend'], function () {
+    Route::get('registrar', 'ClientesController@create')->name('registraCliente');
+
+    Route::group(['middleware' => 'cliente'], function () {
+        Route::get('perfil', 'ClientesController@perfiClientes')->name('perfilCliente');
+        Route::get('logout', 'CustomAuthController@logout')->name('logout');
+        Route::post('login', 'CustomAuthController@login')->name('login');
+    });
     Route::get('paquetes', 'HomeController@home')->name('paquetes');
+    
 });
+
+
+
+
+
+
+Route::post('registrarCliente', [ClientesController::class , 'registrarCliente'])->name('registrarCliente');
+
+
 
 Route::group(['prefix' => 'admin', 'as' => 'admin.', 'namespace' => 'Admin', 'middleware' => ['auth', 'admin']], function () {
     Route::get('/', 'HomeController@index')->name('home');
@@ -24,6 +40,8 @@ Route::group(['prefix' => 'admin', 'as' => 'admin.', 'namespace' => 'Admin', 'mi
     // Users
     Route::delete('users/destroy', 'UsersController@massDestroy')->name('users.massDestroy');
     Route::resource('users', 'UsersController');
+
+   
 
     // Product Category
     Route::delete('product-categories/destroy', 'ProductCategoryController@massDestroy')->name('product-categories.massDestroy');

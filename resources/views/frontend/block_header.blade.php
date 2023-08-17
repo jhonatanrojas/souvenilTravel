@@ -1,16 +1,24 @@
 <header>
     <div id="top_line">
         <div class="container">
-            <div class="row">
-                <div class="col-6"><i class="icon-phone"></i><strong>0045 043204434</strong></div>
-                <div class="col-6">
-                    <ul id="top_links">
-                        <li><a href="#sign-in-dialog" id="access_link">Sign in</a></li>
-                        <li><a href="wishlist.html" id="wishlist_link">Wishlist</a></li>
-                        <li><a href="http://themeforest.net/item/citytours-city-tours-tour-tickets-and-guides/10715647?ref=ansonika">Purchase this template</a></li>
-                    </ul>
-                </div>
-            </div><!-- End row -->
+           <div class="row">
+    <div class="col-6"><i class="icon-phone"></i><strong>0045 043204434</strong></div>
+    <div class="col-6">
+        @if(session('user_id'))
+            <ul id="top_links">
+                <li><a href="{{ route('logout') }}">Cerrar sesión</a></li>
+                <li><a href="wishlist.html" id="wishlist_link">My perfil</a></li>
+                
+            </ul>
+        @else
+            <ul id="top_links">
+                <li><a href="#sign-in-dialog" id="access_link">Iniciar sesión</a></li>
+                <li><a href="wishlist.html" id="wishlist_link">Wishlist</a></li>
+                <li><a href="http://themeforest.net/item/citytours-city-tours-tour-tickets-and-guides/10715647?ref=ansonika">Purchase this template</a></li>
+            </ul>
+        @endif
+    </div>
+</div><!-- End row -->
         </div><!-- End container-->
     </div><!-- End top line-->
     

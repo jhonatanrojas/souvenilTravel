@@ -1,18 +1,26 @@
 <?php
 
 namespace App\Http\Controllers\Frontend;
-
 use App\Http\Controllers\Controller;
 use App\Http\Requests\MassDestroyClienteRequest;
 use App\Http\Requests\StoreClienteRequest;
 use App\Http\Requests\UpdateClienteRequest;
 use App\Models\Cliente;
-
+use App\Models\User;
+use Illuminate\Auth\Access\Gate;
+use Illuminate\Foundation\Auth\AuthenticatesUsers;
+use Illuminate\Validation\Rule;
+use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Validator;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\Request;
-use Symfony\Component\HttpFoundation\Response;
+
+
 
 class ClientesController extends Controller
 {
+    use AuthenticatesUsers;
+    
     public function index()
     {
       //  abort_if(Gate::denies('cliente_access'), Response::HTTP_FORBIDDEN, '403 Forbidden');
@@ -41,6 +49,57 @@ class ClientesController extends Controller
     
     }
 
+    public function registrarCliente(Request $request)
+
+    {
+        $this->validarRegistro($request);
+        $cliente = $this->crearCliente($request);
+
+            session([
+                'user_id' => $cliente->id,
+                'user_email' => $cliente->email,
+            ]);
+            Auth::login($cliente);
+    
+        return redirect()->route('perfilCliente');
+    }
+    
+    protected function validarRegistro(Request $request)
+    {
+        $validaciones = [
+            'nombres' => 'required|string|max:255',
+            'email' => [
+                'required',
+                'email',
+                Rule::unique('clientes'),
+            ],
+            'password' => 'required|min:8|confirmed', // Cambio aquí
+        ];
+    
+        $mensajes = [
+            'nombres.required' => 'El nombre es obligatorio.',
+            'nombres.string' => 'El nombre debe ser una cadena de texto.',
+            'nombres.max' => 'El nombre no debe exceder 255 caracteres.',
+            'email.required' => 'El correo electrónico es obligatorio.',
+            'email.email' => 'El correo electrónico debe ser válido.',
+            'email.unique' => 'Este correo electrónico ya ha sido registrado.',
+            'password.required' => 'La contraseña es obligatoria.',
+            'password.min' => 'La contraseña debe tener al menos 8 caracteres.',
+            'password.confirmed' => 'Las contraseñas no coinciden.', // Cambio aquí
+        ];
+    
+        $this->validate($request, $validaciones, $mensajes);
+    }
+    
+    protected function crearCliente(Request $request)
+    {
+        return Cliente::create([
+            'nombres' => $request->nombres,
+            'email' => $request->email,
+            'password' => Hash::make($request->password),
+            'remember_token' => $request->remember_token,
+        ]);
+    }
     public function store(StoreClienteRequest $request)
     {
         $cliente = Cliente::create($request->all());
@@ -62,22 +121,27 @@ class ClientesController extends Controller
         return redirect()->route('admin.clientes.index');
     }*/
 
-    public function show(Cliente $cliente)
-    {
-        $viewHome =  'frontend.clientes.perfil';
-        $layoutPage = 'perfil_cliente';
+    public function perfiClientes()
+{
+    $useremail = session('user_email');
+    $cliente = Cliente::where('email', $useremail)->first();
 
-        return view(
-            $viewHome,
-            array(
-                'title'       => 'Inicio',
-                'keyword'     => 'palablas clave',
-                'description' => 'descripcion',
-                'layout_page' => $layoutPage,
-            )
-        );
+    if ($cliente) {
+        session(['user_id' => $cliente->id]);
 
+        $data = [
+            'title' => 'Perfil de usuario',
+            'keyword' => 'palabras clave',
+            'description' => 'descripción',
+            'layout_page' => 'perfil_cliente',
+            'cliente' => $cliente,
+        ];
+
+        return view('frontend.clientes.perfil', $data);
+    } else {
+        return redirect()->route('registraCliente')->with('error', 'No se encontró el perfil del cliente');
     }
+}
 
    
 }

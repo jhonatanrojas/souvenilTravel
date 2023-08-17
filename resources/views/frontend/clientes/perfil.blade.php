@@ -1,6 +1,9 @@
 @extends('frontend.layout')
 @section('block_main')
 
+
+
+
 	<!-- SPECIFIC CSS -->
 	<link href="{{ asset('template/css/admin.css')}}" rel="stylesheet">
 	
@@ -456,26 +459,20 @@
             <section id="section-4">
                 <div class="row">
                     <div class="col-md-6">
-                        <h4>Your profile</h4>
+                        <h4>Perfil</h4>
                         <ul id="profile_summary">
-                            <li>Username <span>info@clara.com</span>
+                            <li>Username <span>{{$cliente->nombres}}</span>
                             </li>
-                            <li>First name <span>Clara</span>
+                            <li>First name <span>{{$cliente->apellidos}}</span>
                             </li>
-                            <li>Last name <span>Tomson</span>
+
                             </li>
                             <li>Phone number <span>+00 032 42366</span>
                             </li>
-                            <li>Date of birth <span>13/04/1975</span>
-                            </li>
-                            <li>Street address <span>24 Rue de Rivoli</span>
-                            </li>
-                            <li>Town/City <span>Paris</span>
-                            </li>
-                            <li>Zip code <span>002843</span>
-                            </li>
-                            <li>Country <span>France</span>
-                            </li>
+                           
+                           
+                           
+                          
                         </ul>
                     </div>
                     <div class="col-md-6">
