@@ -6,16 +6,13 @@ Route::get('/', 'HomeController@index')->name('home');
 Auth::routes(['register' => false]);
 
 //GRUPO DE FRONT
-Route::group(['prefix' => 'cliente', 'namespace' => 'Frontend'], function () {
-    Route::get('registrar', 'ClientesController@create')->name('registraCliente');
+Route::group(['as' => '/', 'namespace' => 'Frontend' ], function () {
+   // Route::resource('clientes', 'ClientesController')->name('create');
+    Route::get('cliente/registrar', 'ClientesController@create')->name('registraCliente');
+    Route::get('cliente/perfil', 'ClientesController@show')->name('perfilCliente');
 
-    Route::group(['middleware' => 'cliente'], function () {
-        Route::get('perfil', 'ClientesController@perfiClientes')->name('perfilCliente');
-        Route::get('logout', 'CustomAuthController@logout')->name('logout');
-        Route::post('login', 'CustomAuthController@login')->name('login');
-    });
-    Route::get('paquetes', 'HomeController@home')->name('paquetes');
-    
+    Route::get('paquete-turistico/{id}', 'PaquetesController@show')->name('ver_paquete');
+    Route::get('paquetes-turisticos', 'PaquetesController@index')->name('lista_paquetes');
 });
 
 

@@ -1,76 +1,43 @@
-<div class="white_bg">
-    <div class="container margin_60">
-        <div class="row small-gutters categories_grid">
-            <div class="col-sm-12 col-md-6">
-                <a href="all_tours_list.html">
-                    <img src="img/img_cat_home_1.jpg" alt="" class="img-fluid">
-                    <div class="wrapper">
-                        <h2>Special Offers</h2>
-                        <p>1150 Locations</p>
-                    </div>
-                </a>
-            </div>
-            <div class="col-sm-12 col-md-6">
-                <div class="row small-gutters mt-md-0 mt-sm-2">
-                    <div class="col-sm-6">
-                        <a href="all_tours_list.html">
-                            <img src="img/img_cat_home_2.jpg" alt="" class="img-fluid">
-                            <div class="wrapper">
-                                <h2>Tours</h2>
-                                <p>800 Locations</p>
-                            </div>
-                        </a>
-                    </div>
-                    <div class="col-sm-6">
-                        <a href="all_hotels_list.html">
-                            <img src="img/img_cat_home_3.jpg" alt="" class="img-fluid">
-                            <div class="wrapper">
-                                <h2>Hotels</h2>
-                                <p>650 Locations</p>
-                            </div>
-                        </a>
-                    </div>
-                    <div class="col-sm-12 mt-sm-2">
-                        <a href="all_restaurants_list.html">
-                            <img src="img/img_cat_home_4.jpg" alt="" class="img-fluid">
-                            <div class="wrapper">
-                                <h2>Restaurants</h2>
-                                <p>1132 Locations</p>
-                            </div>
-                        </a>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <!--/categories_grid-->
-    </div>
-    <!-- /container -->
-</div>
-<!-- /white_bg -->
 
+
+@php
+
+$productos = getProductosByCategory(1);
+$hopesajes = getProductosByCategory(2);
+
+@endphp
 <div class="container margin_60">
 
     <div class="main_title">
-        <h2>Paris <span>Top</span> Tours</h2>
-        <p>Quisque at tortor a libero posuere laoreet vitae sed arcu. Curabitur consequat.</p>
+        <h2> Margarita<span> {{sc_language_render('Paquetes')}}</span> {{sc_language_render('Populares')}}</h2>
+        <p>{{sc_language_render('Descubre los mejores paquetes turísticos para visitar la isla de Margarita, un destino paradisíaco con playas de arena blanca, aguas cristalinas y clima tropical.')}}</p>
     </div>
 
-    <div class="owl-carousel owl-theme list_carousel add_bottom_30">
+    <div class="owl-carousel owl-theme list_carousel ">
+
+        @foreach ($productos as $producto )
+
+    
         <div class="item">
             <div class="tour_container">
-                <div class="ribbon_3 popular"><span>Popular</span></div>
+                @if($producto->destacado)
+                <div class="ribbon_3 {{$producto->destacado}}"><span>{{$producto->destacado}}</span></div>
+                @endif
                 <div class="img_container">
-                    <a href="single_tour.html">
-                        <img src="img/tour_box_1.jpg" width="800" height="533" class="img-fluid"
+                    <a href="{{route('/ver_paquete',$producto->id)}}">
+                             @foreach($producto->photo as $key => $media)
+                        <img src="{{ $media->getUrl() }}" width="800" height="533" class="img-fluid"
                             alt="image">
+                            @break
+                            @endforeach
                         <div class="short_info">
-                            <i class="icon_set_1_icon-44"></i>Historic Buildings<span
-                                class="price"><sup>$</sup>39</span>
+                            <i class="icon_set_1_icon-44"></i>Icono destacado<span
+                                class="price"><sup>$</sup>{{$producto->price}}</span>
                         </div>
                     </a>
                 </div>
                 <div class="tour_title">
-                    <h3><strong>Arc Triomphe</strong> tour</h3>
+                    <h3><strong> {{sc_language_render('Destino')}} {{$producto->name}}</strong> </h3>
                     <div class="rating">
                         <i class="icon-smile voted"></i><i class="icon-smile voted"></i><i
                             class="icon-smile voted"></i><i class="icon-smile voted"></i><i
@@ -79,175 +46,55 @@
                     <!-- end rating -->
                     <div class="wishlist">
                         <a class="tooltip_flip tooltip-effect-1" href="javascript:void(0);">+<span
-                                class="tooltip-content-flip"><span class="tooltip-back">Add to
-                                    wishlist</span></span></a>
+                                class="tooltip-content-flip"><span class="tooltip-back">Agregar a favorito</span></span></a>
                     </div>
                     <!-- End wish list-->
                 </div>
             </div>
             <!-- End box tour -->
         </div>
-        <!-- /item -->
-        <div class="item">
-            <div class="tour_container">
-                <div class="ribbon_3 popular"><span>Popular</span></div>
-                <div class="img_container">
-                    <a href="single_tour.html">
-                        <img src="img/tour_box_2.jpg" width="800" height="533" class="img-fluid"
-                            alt="image">
-                        <div class="short_info">
-                            <i class="icon_set_1_icon-43"></i>Churches<span
-                                class="price"><sup>$</sup>45</span>
-                        </div>
-                    </a>
-                </div>
-                <div class="tour_title">
-                    <h3><strong>Notredame</strong> tour</h3>
-                    <div class="rating">
-                        <i class="icon-smile voted"></i><i class="icon-smile voted"></i><i
-                            class="icon-smile voted"></i><i class="icon-smile voted"></i><i
-                            class="icon-smile"></i><small>(75)</small>
-                    </div>
-                    <!-- end rating -->
-                    <div class="wishlist">
-                        <a class="tooltip_flip tooltip-effect-1" href="javascript:void(0);">+<span
-                                class="tooltip-content-flip"><span class="tooltip-back">Add to
-                                    wishlist</span></span></a>
-                    </div>
-                    <!-- End wish list-->
-                </div>
-            </div>
-            <!-- End box tour -->
-        </div>
-        <!-- /item -->
-        <div class="item">
-            <div class="tour_container">
-                <div class="ribbon_3 popular"><span>Popular</span></div>
-                <div class="img_container">
-                    <a href="single_tour.html">
-                        <img src="img/tour_box_3.jpg" width="800" height="533" class="img-fluid"
-                            alt="image">
-                        <div class="badge_save">Save<strong>30%</strong></div>
-                        <div class="short_info">
-                            <i class="icon_set_1_icon-44"></i>Historic Buildings<span
-                                class="price"><sup>$</sup>48</span>
-                        </div>
-                    </a>
-                </div>
-                <div class="tour_title">
-                    <h3><strong>Versailles</strong> tour</h3>
-                    <div class="rating">
-                        <i class="icon-smile voted"></i><i class="icon-smile voted"></i><i
-                            class="icon-smile voted"></i><i class="icon-smile voted"></i><i
-                            class="icon-smile"></i><small>(75)</small>
-                    </div>
-                    <!-- end rating -->
-                    <div class="wishlist">
-                        <a class="tooltip_flip tooltip-effect-1" href="javascript:void(0);">+<span
-                                class="tooltip-content-flip"><span class="tooltip-back">Add to
-                                    wishlist</span></span></a>
-                    </div>
-                    <!-- End wish list-->
-                </div>
-            </div>
-            <!-- End box tour -->
-        </div>
-        <!-- /item -->
-        <div class="item">
-            <div class="tour_container">
-                <div class="ribbon_3"><span>Top rated</span></div>
-                <div class="img_container">
-                    <a href="single_tour.html">
-                        <img src="img/tour_box_4.jpg" width="800" height="533" class="img-fluid"
-                            alt="image">
-                        <div class="badge_save">Save<strong>20%</strong></div>
-                        <div class="short_info">
-                            <i class="icon_set_1_icon-30"></i>Walking tour<span
-                                class="price"><sup>$</sup>36</span>
-                        </div>
-                    </a>
-                </div>
-                <div class="tour_title">
-                    <h3><strong>Pompidue</strong> tour</h3>
-                    <div class="rating">
-                        <i class="icon-smile voted"></i><i class="icon-smile voted"></i><i
-                            class="icon-smile voted"></i><i class="icon-smile voted"></i><i
-                            class="icon-smile"></i><small>(75)</small>
-                    </div>
-                    <!-- end rating -->
-                    <div class="wishlist">
-                        <a class="tooltip_flip tooltip-effect-1" href="javascript:void(0);">+<span
-                                class="tooltip-content-flip"><span class="tooltip-back">Add to
-                                    wishlist</span></span></a>
-                    </div>
-                    <!-- End wish list-->
-                </div>
-            </div>
-            <!-- End box tour -->
-        </div>
-        <!-- /item -->
-        <div class="item">
-            <div class="tour_container">
-                <div class="ribbon_3"><span>Top rated</span></div>
-                <div class="img_container">
-                    <a href="single_tour.html">
-                        <img src="img/tour_box_14.jpg" width="800" height="533" class="img-fluid"
-                            alt="image">
-                        <div class="short_info">
-                            <i class="icon_set_1_icon-28"></i>Skyline tours<span
-                                class="price"><sup>$</sup>42</span>
-                        </div>
-                    </a>
-                </div>
-                <div class="tour_title">
-                    <h3><strong>Tour Eiffel</strong> tour</h3>
-                    <div class="rating">
-                        <i class="icon-smile voted"></i><i class="icon-smile voted"></i><i
-                            class="icon-smile voted"></i><i class="icon-smile voted"></i><i
-                            class="icon-smile"></i><small>(75)</small>
-                    </div>
-                    <!-- end rating -->
-                    <div class="wishlist">
-                        <a class="tooltip_flip tooltip-effect-1" href="javascript:void(0);">+<span
-                                class="tooltip-content-flip"><span class="tooltip-back">Add to
-                                    wishlist</span></span></a>
-                    </div>
-                    <!-- End wish list-->
-                </div>
-            </div>
-            <!-- End box tour -->
-        </div>
-        <!-- /item -->
+        @endforeach
+
+   
     </div>
     <!-- /carousel -->
 
-    <p class="text-center add_bottom_30">
-        <a href="all_tours_list.html" class="btn_1">View all Tours</a>
+    <p class="text-center ">
+        <a href="{{route('/lista_paquetes')}}" class="btn_1">{{sc_language_render('Ver todos los paquetes')}}</a>
     </p>
 
-    <hr class="mt-5 mb-5">
+    <hr class="mt-1 mb-5">
 
     <div class="main_title">
-        <h2>Paris <span>Top</span> Hotels</h2>
-        <p>Quisque at tortor a libero posuere laoreet vitae sed arcu. Curabitur consequat.</p>
+        <h2>Margarita <span>Hospedajes </span> Destacados</h2>
+        <p>¿Estás buscando un lugar donde alojarte en Margarita? ¡Tenemos lo que necesitas! En nuestra página web encontrarás una selección de los mejores hospedajes de la isla, desde hoteles de lujo hasta posad</p>
     </div>
 
-    <div class="owl-carousel owl-theme list_carousel add_bottom_30">
+    <div class="owl-carousel owl-theme list_carousel ">
+        @foreach ($hopesajes as $hospedaje )
+            
+      
         <div class="item">
             <div class="hotel_container">
-                <div class="ribbon_3 popular"><span>Popular</span></div>
+                @if($hospedaje->destacado)
+                <div class="ribbon_3 {{$hospedaje->destacado}}"><span>{{$hospedaje->destacado}}</span></div>
+                @endif
                 <div class="img_container">
                     <a href="single_hotel.html">
-                        <img src="img/hotel_1.jpg" width="800" height="533" class="img-fluid"
-                            alt="image">
-                        <div class="score"><span>7.5</span>Good</div>
+                        <a href="single_tour.html">
+                            @foreach($hospedaje->photo as $key => $media)
+                       <img src="{{ $media->getUrl() }}" width="800" height="533" class="img-fluid"
+                           alt="image">
+                           @break
+                           @endforeach
+                    
                         <div class="short_info hotel">
-                            <span class="price"><sup>$</sup>59</span>
+                            <span class="price"><sup>$</sup>{{$hospedaje->price}}</span>
                         </div>
                     </a>
                 </div>
                 <div class="hotel_title">
-                    <h3><strong>Park Hyatt</strong> Hotel</h3>
+                    <h3><strong> {{$hospedaje->name}}</strong> </h3>
                     <div class="rating">
                         <i class="icon-star voted"></i><i class="icon-star voted"></i><i
                             class="icon-star voted"></i><i class="icon-star voted"></i><i
@@ -256,148 +103,21 @@
                     <!-- end rating -->
                     <div class="wishlist">
                         <a class="tooltip_flip tooltip-effect-1" href="#">+<span
-                                class="tooltip-content-flip"><span class="tooltip-back">Add to
-                                    wishlist</span></span></a>
+                                class="tooltip-content-flip"><span class="tooltip-back">
+                                    {{sc_language_render('Agregar a Favoritos')}}</span></span></a>
                     </div>
                     <!-- End wish list-->
                 </div>
             </div>
             <!-- End box -->
         </div>
-        <!-- /item -->
-        <div class="item">
-            <div class="hotel_container">
-                <div class="ribbon_3 popular"><span>Popular</span></div>
-                <div class="img_container">
-                    <a href="single_hotel.html">
-                        <img src="img/hotel_2.jpg" width="800" height="533" class="img-fluid"
-                            alt="image">
-                        <div class="score"><span>9.0</span>Superb</div>
-                        <div class="short_info hotel">
-                            <span class="price"><sup>$</sup>45</span>
-                        </div>
-                    </a>
-                </div>
-                <div class="hotel_title">
-                    <h3><strong>Mariott</strong> Hotel</h3>
-                    <div class="rating">
-                        <i class="icon-star voted"></i><i class="icon-star voted"></i><i
-                            class="icon-star voted"></i><i class="icon-star voted"></i><i
-                            class="icon-star-empty"></i>
-                    </div>
-                    <!-- end rating -->
-                    <div class="wishlist">
-                        <a class="tooltip_flip tooltip-effect-1" href="#">+<span
-                                class="tooltip-content-flip"><span class="tooltip-back">Add to
-                                    wishlist</span></span></a>
-                    </div>
-                    <!-- End wish list-->
-                </div>
-            </div>
-            <!-- End box -->
-        </div>
-        <!-- /item -->
-        <div class="item">
-            <div class="hotel_container">
-                <div class="ribbon_3"><span>Top rated</span></div>
-                <div class="img_container">
-                    <a href="single_hotel.html">
-                        <img src="img/hotel_3.jpg" width="800" height="533" class="img-fluid"
-                            alt="image">
-                        <div class="score"><span>9.5</span>Superb</div>
-                        <div class="short_info hotel">
-                            <span class="price"><sup>$</sup>39</span>
-                        </div>
-                    </a>
-                </div>
-                <div class="hotel_title">
-                    <h3><strong>Lumiere</strong> Hotel</h3>
-                    <div class="rating">
-                        <i class="icon-star voted"></i><i class="icon-star voted"></i><i
-                            class="icon-star voted"></i><i class="icon-star voted"></i><i
-                            class="icon-star-empty"></i>
-                    </div>
-                    <!-- end rating -->
-                    <div class="wishlist">
-                        <a class="tooltip_flip tooltip-effect-1" href="#">+<span
-                                class="tooltip-content-flip"><span class="tooltip-back">Add to
-                                    wishlist</span></span></a>
-                    </div>
-                    <!-- End wish list-->
-                </div>
-            </div>
-            <!-- End box -->
-        </div>
-        <!-- /item -->
-        <div class="item">
-            <div class="hotel_container">
-                <div class="ribbon_3"><span>Top rated</span></div>
-                <div class="img_container">
-                    <a href="single_hotel.html">
-                        <img src="img/hotel_4.jpg" width="800" height="533" class="img-fluid"
-                            alt="image">
-                        <div class="score"><span>7.5</span>Good</div>
-                        <div class="short_info hotel">
-                            <span class="price"><sup>$</sup>45</span>
-                        </div>
-                    </a>
-                </div>
-                <div class="hotel_title">
-                    <h3><strong>Novelle</strong> Hotel</h3>
-                    <div class="rating">
-                        <i class="icon-star voted"></i><i class="icon-star voted"></i><i
-                            class="icon-star voted"></i><i class="icon-star voted"></i><i
-                            class="icon-star-empty"></i>
-                    </div>
-                    <!-- end rating -->
-                    <div class="wishlist">
-                        <a class="tooltip_flip tooltip-effect-1" href="javascript:void(0);">+<span
-                                class="tooltip-content-flip"><span class="tooltip-back">Add to
-                                    wishlist</span></span></a>
-                    </div>
-                    <!-- End wish list-->
-                </div>
-            </div>
-            <!-- End box -->
-        </div>
-        <!-- /item -->
-        <div class="item">
-            <div class="hotel_container">
-                <div class="ribbon_3"><span>Top rated</span></div>
-                <div class="img_container">
-                    <a href="single_hotel.html">
-                        <img src="img/hotel_5.jpg" width="800" height="533" class="img-fluid"
-                            alt="image">
-                        <div class="score"><span>8.0</span>Good</div>
-                        <div class="short_info hotel">
-                            <span class="price"><sup>$</sup>39</span>
-                        </div>
-                    </a>
-                </div>
-                <div class="hotel_title">
-                    <h3><strong>Louvre</strong> Hotel</h3>
-                    <div class="rating">
-                        <i class="icon-star voted"></i><i class="icon-star voted"></i><i
-                            class="icon-star voted"></i><i class="icon-star voted"></i><i
-                            class="icon-star-empty"></i>
-                    </div>
-                    <!-- end rating -->
-                    <div class="wishlist">
-                        <a class="tooltip_flip tooltip-effect-1" href="#">+<span
-                                class="tooltip-content-flip"><span class="tooltip-back">Add to
-                                    wishlist</span></span></a>
-                    </div>
-                    <!-- End wish list-->
-                </div>
-            </div>
-            <!-- End box -->
-        </div>
-        <!-- /item -->
+        @endforeach
+   
     </div>
     <!-- /carousel -->
 
-    <p class="text-center nopadding">
-        <a href="all_hotels_list.html" class="btn_1">View all Hotels</a>
+    <p class="text-center nopadding pt-0">
+        <a href="{{route('/lista_paquetes')}}" class="btn_1">{{sc_language_render('Ver todos')}}</a>
     </p>
 
 </div>
@@ -406,43 +126,32 @@
 <div class="white_bg">
     <div class="container margin_60">
         <div class="main_title">
-            <h2>Plan <span>Your Tour</span> Easly</h2>
+            <h2>Planifica tus <span>Vacaciones</span> facilmente</h2>
             <p>
-                Quisque at tortor a libero posuere laoreet vitae sed arcu. Curabitur consequat.
-            </p>
+                Descubre los mejores paquetes turísticos y hospedajes que tenemos para ti. Podrás elegir entre una gran variedad de destinos, actividades y alojamientos, con precios accesibles y facilidades de pago            </p>
         </div>
         <div class="row feature_home_2">
             <div class="col-md-4 text-center">
-                <img src="img/adventure_icon_1.svg" alt="" width="75" height="75">
-                <h3>Itineraries studied in detail</h3>
-                <p>Suscipit invenire petentium per in. Ne magna assueverit vel. Vix movet perfecto facilisis in,
-                    ius ad maiorum corrumpit, his esse docendi in.</p>
+                <img src="{{asset('template/img/adventure_icon_1.svg')}}" alt="" width="75" height="75">
+                <h3>Itinerarios estudiados en detalle
+                    </h3>
+                <p>e ofrecemos paquetes turísticos y hospedajes de calidad, con opciones para todos los gustos y presupuestos. </p>
             </div>
             <div class="col-md-4 text-center">
-                <img src="img/adventure_icon_2.svg" alt="" width="75" height="75">
-                <h3>Room and food included</h3>
-                <p> Cum accusam voluptatibus at, et eum fuisset sententiae. Postulant tractatos ius an, in vis
-                    fabulas percipitur, est audiam phaedrum electram ex.</p>
+                <img src="{{asset('template/img/adventure_icon_2.svg')}}" alt="" width="75" height="75">
+                <h3>Habitaciones y comida incluidas
+                </h3>
+                <p> abitaciones y comida incluidas en los mejores hoteles y resorts de la zona</p>
             </div>
             <div class="col-md-4 text-center">
-                <img src="img/adventure_icon_3.svg" alt="" width="75" height="75">
-                <h3>Everything organized</h3>
-                <p>Integre vivendo percipitur eam in, graece suavitate cu vel. Per inani persius accumsan no. An
-                    case duis option est, pro ad fastidii contentiones.</p>
+                <img src="{{asset('template/img/adventure_icon_3.svg')}}" alt="" width="75" height="75">
+                <h3>Todo organizado
+                </h3>
+                <p>Te ofrecemos los mejores paquetes turísticos y hospedajes para que solo te dediques a disfrutar. Elige tu destino, tu fecha y tu presupuesto, y nosotros nos encargamos del resto.</p>
             </div>
         </div>
 
-        <div class="banner_2">
-            <div class="wrapper d-flex align-items-center opacity-mask" data-opacity-mask="rgba(0, 0, 0, 0.3)"
-                style="background-color: rgba(0, 0, 0, 0.3);">
-                <div>
-                    <h3>Your Perfect<br>Tour Experience</h3>
-                    <p>Activities and accommodations</p>
-                    <a href="all_tours_list.html" class="btn_1">Read more</a>
-                </div>
-            </div>
-            <!-- /wrapper -->
-        </div>
+    
         <!-- /banner_2 -->
 
     </div>
@@ -452,14 +161,14 @@
 
 <div class="container margin_60">
     <div class="main_title">
-        <h2>Lates <span>Blog</span> News</h2>
+        <h2> <span>Blog</span> Novedades</h2>
         <p>Quisque at tortor a libero posuere laoreet vitae sed arcu. Curabitur consequat.</p>
     </div>
 
     <div class="row">
         <div class="col-lg-6">
             <a class="box_news" href="blog.html">
-                <figure><img src="img/news_home_1.jpg" alt="">
+                <figure><img src="{{asset('template/img/news_home_1.jpg')}}" alt="">
                     <figcaption><strong>28</strong>Dec</figcaption>
                 </figure>
                 <ul>
@@ -474,7 +183,7 @@
         <!-- /box_news -->
         <div class="col-lg-6">
             <a class="box_news" href="blog.html">
-                <figure><img src="img/news_home_2.jpg" alt="">
+                <figure><img src="{{asset('template/img/news_home_2.jpg')}}" alt="">
                     <figcaption><strong>28</strong>Dec</figcaption>
                 </figure>
                 <ul>
@@ -489,7 +198,7 @@
         <!-- /box_news -->
         <div class="col-lg-6">
             <a class="box_news" href="blog.html">
-                <figure><img src="img/news_home_3.jpg" alt="">
+                <figure><img src="{{asset('template/img/news_home_3.jpg')}}" alt="">
                     <figcaption><strong>28</strong>Dec</figcaption>
                 </figure>
                 <ul>
@@ -504,7 +213,7 @@
         <!-- /box_news -->
         <div class="col-lg-6">
             <a class="box_news" href="blog.html">
-                <figure><img src="img/news_home_4.jpg" alt="">
+                <figure><img src="{{asset('template/img/news_home_4.jpg')}}" alt="">
                     <figcaption><strong>28</strong>Dec</figcaption>
                 </figure>
                 <ul>

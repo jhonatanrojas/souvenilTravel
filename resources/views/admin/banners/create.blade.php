@@ -7,8 +7,10 @@
     </div>
 
     <div class="card-body">
-        <form method="POST" action="{{ route("admin.banners.store") }}" enctype="multipart/form-data">
+        <form 
+        method="POST" action="{{ route("admin.banners.store") }}" enctype="multipart/form-data">
             @csrf
+      
             <div class="form-group">
                 <label class="required" for="imagen">{{ trans('cruds.banner.fields.imagen') }}</label>
                 <div class="needsclick dropzone {{ $errors->has('imagen') ? 'is-invalid' : '' }}" id="imagen-dropzone">

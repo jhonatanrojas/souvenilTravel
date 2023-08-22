@@ -4,7 +4,7 @@
 <div class="card">
     <div class="card-header">
         {{ trans('global.create') }} {{ trans('cruds.product.title_singular') }}
-    </div>
+    </div> 
 
     <div class="card-body">
         <form method="POST" action="{{ route("admin.products.store") }}" enctype="multipart/form-data">
@@ -196,6 +196,21 @@
                     </div>
                 @endif
                 <span class="help-block">{{ trans('cruds.product.fields.logitud_helper') }}</span>
+            </div>
+            <div class="form-group">
+                <label>{{ trans('Etiqueta Destacada') }}</label>
+                <select class="form-control {{ $errors->has('destacado') ? 'is-invalid' : '' }}" name="destacado" id="destacado">
+                    <option value disabled {{ old('destacado', null) === null ? 'selected' : '' }}>{{ trans('Destacada') }}</option>
+                    @foreach(App\Models\Product::DESTACADO_SELECT as $key => $label)
+                        <option value="{{ $key }}" {{ old('destacado', '') === (string) $key ? 'selected' : '' }}>{{ $label }}</option>
+                    @endforeach
+                </select>
+                @if($errors->has('destacado'))
+                    <div class="invalid-feedback">
+                        {{ $errors->first('destacado') }}
+                    </div>
+                @endif
+        
             </div>
             <div class="form-group">
                 <label for="category_id">{{ trans('cruds.product.fields.category') }}</label>

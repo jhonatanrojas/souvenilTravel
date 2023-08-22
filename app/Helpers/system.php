@@ -1,6 +1,8 @@
 <?php
 use App\Models\BloquesPagina;
 use App\Models\Enlace;
+use App\Models\Banner;
+use App\Models\Product;
 use Illuminate\Support\Arr;
 function listBloques()
 {
@@ -15,6 +17,22 @@ function getEnlaces($grupo='menu')
     ->orderBy('orden', 'asc')
     ->get();
 }
+function getProductosByCategory($id_categoria=0)
+{
+ return Product::with(['prestador_servicios', 'estado', 'destino', 'tags', 'category', 'media'])
+ 
+ ->where('category_id',$id_categoria)
+ ->where('estatus',1)
+ ->get();
+}
+
+function getBanner($ubicacion='principal')
+{
+    return Banner::with(['media'])->where('ubicacion', $ubicacion)
+    ->orderBy('orden', 'asc')
+    ->get();
+}
+
 
 
 function sc_url_render(string $string = null):string

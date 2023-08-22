@@ -1,24 +1,15 @@
 <header>
     <div id="top_line">
         <div class="container">
-           <div class="row">
-    <div class="col-6"><i class="icon-phone"></i><strong>0045 043204434</strong></div>
-    <div class="col-6">
-        @if(session('user_id'))
-            <ul id="top_links">
-                <li><a href="{{ route('logout') }}">Cerrar sesión</a></li>
-                <li><a href="wishlist.html" id="wishlist_link">My perfil</a></li>
-                
-            </ul>
-        @else
-            <ul id="top_links">
-                <li><a href="#sign-in-dialog" id="access_link">Iniciar sesión</a></li>
-                <li><a href="wishlist.html" id="wishlist_link">Wishlist</a></li>
-                <li><a href="http://themeforest.net/item/citytours-city-tours-tour-tickets-and-guides/10715647?ref=ansonika">Purchase this template</a></li>
-            </ul>
-        @endif
-    </div>
-</div><!-- End row -->
+            <div class="row">
+                <div class="col-6"><i class="icon-phone"></i><strong>0045 043204434</strong></div>
+                <div class="col-6">
+                    <ul id="top_links">
+                        <li><a href="#sign-in-dialog" id="access_link">{{  sc_language_render('Iniciar Sesión')}}</a></li>
+                        <li><a href="wishlist.html" id="wishlist_link">{{  sc_language_render('Lista de deseos')}}</a></li>
+                    </ul>
+                </div>
+            </div><!-- End row -->
         </div><!-- End container-->
     </div><!-- End top line-->
     
@@ -26,14 +17,14 @@
         <div class="row">
             <div class="col-3">
                 <div id="logo_home">
-                    <h1><a href="index.html" title="City tours travel template">City Tours travel template</a></h1>
+                    <h1><a href="{{ request()->url() }}" title="City tours travel template">City Tours travel template</a></h1>
                 </div>
             </div>
             <nav class="col-9">
                 <a class="cmn-toggle-switch cmn-toggle-switch__htx open_close" href="javascript:void(0);"><span>Menu mobile</span></a>
                 <div class="main-menu">
                     <div id="header_menu">
-                        <img src="{{ asset('img/logo_sticky.png')}}" width="160" height="34" alt="City tours">
+                        <img src="{{ asset('souvenir.png')}}" width="160" height="34" alt="Souvenir logo">
                     </div>
                     <a href="#" class="open_close" id="close_in"><i class="icon_set_1_icon-77"></i></a>
                      <ul>
@@ -63,31 +54,23 @@
                         <a href="javascript:void(0);" class="search-overlay-menu-btn"><i class="icon_search"></i></a>
                     </li>
                     <li>
+
                         <div class="dropdown dropdown-cart">
-                            <a href="#" data-bs-toggle="dropdown" class="cart_bt"><i class="icon_bag_alt"></i><strong>3</strong></a>
-                            <ul class="dropdown-menu" id="cart_items">
+                            <a href="#" data-bs-toggle="dropdown" class="cart_bt"><i class="icon_bag_alt"></i><strong id="cartItemCount">0</strong></a>
+                            <ul class="dropdown-menu" id="cartItems">
+                              
+                              
                                 <li>
-                                    <div class="image"><img src="img/thumb_cart_1.jpg" alt="image"></div>
-                                    <strong><a href="#">Louvre museum</a>1x $36.00 </strong>
-                                    <a href="#" class="action"><i class="icon-trash"></i></a>
-                                </li>
-                                <li>
-                                    <div class="image"><img src="img/thumb_cart_2.jpg" alt="image"></div>
-                                    <strong><a href="#">Versailles tour</a>2x $36.00 </strong>
-                                    <a href="#" class="action"><i class="icon-trash"></i></a>
-                                </li>
-                                <li>
-                                    <div class="image"><img src="img/thumb_cart_3.jpg" alt="image"></div>
-                                    <strong><a href="#">Versailles tour</a>1x $36.00 </strong>
-                                    <a href="#" class="action"><i class="icon-trash"></i></a>
-                                </li>
-                                <li>
-                                    <div>Total: <span>$120.00</span></div>
-                                    <a href="cart.html" class="button_drop">Go to cart</a>
-                                    <a href="payment.html" class="button_drop outline">Check out</a>
+                                    <div>Total: <span id="cartTotal">$0.00</span></div>
+                                    <a href="cart.html" class="button_drop">Ir al carrito</a>
+                                    <a href="payment.html" class="button_drop outline">Reservar</a>
                                 </li>
                             </ul>
-                        </div><!-- End dropdown-cart-->
+                        </div>
+               
+
+                        
+              
                     </li>
                 </ul>
             </nav>
