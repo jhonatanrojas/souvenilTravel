@@ -55,19 +55,28 @@ class ClientesController extends Controller
         $this->validarRegistro($request);
         $cliente = $this->crearCliente($request);
 
+        $cliente = $this->crearCliente($request);
+
+        if ($cliente) {
             session([
                 'user_id' => $cliente->id,
                 'user_email' => $cliente->email,
             ]);
             Auth::login($cliente);
-    
-        return redirect()->route('perfilCliente');
+            
+            return redirect()->route('perfilCliente')->with('success', 'Registro exitoso y sesión iniciada.');
+        } else {
+            return redirect()->route('registraCliente')->with('error', 'No se pudo completar el registro.');
+        }
     }
     
     protected function validarRegistro(Request $request)
     {
         $validaciones = [
             'nombres' => 'required|string|max:255',
+            'apellidos' => 'required|string|max:255',
+            'cedula' => 'required|string|max:20',
+            'telefono' => 'required|string|max:20',
             'email' => [
                 'required',
                 'email',
@@ -75,11 +84,16 @@ class ClientesController extends Controller
             ],
             'password' => 'required|min:8|confirmed', // Cambio aquí
         ];
-    
+
         $mensajes = [
             'nombres.required' => 'El nombre es obligatorio.',
             'nombres.string' => 'El nombre debe ser una cadena de texto.',
             'nombres.max' => 'El nombre no debe exceder 255 caracteres.',
+            'apellidos.required' => 'El apellido es obligatorio.',
+            'apellidos.string' => 'El apellido debe ser una cadena de texto.',
+            'apellidos.max' => 'El apellidos no debe exceder 255 caracteres.',
+            'cedula.required' => 'La cedula es obligatoria..',
+            'telefono.required' => 'El Telefono es obligatorio..',
             'email.required' => 'El correo electrónico es obligatorio.',
             'email.email' => 'El correo electrónico debe ser válido.',
             'email.unique' => 'Este correo electrónico ya ha sido registrado.',
@@ -93,8 +107,12 @@ class ClientesController extends Controller
     
     protected function crearCliente(Request $request)
     {
+
         return Cliente::create([
             'nombres' => $request->nombres,
+            'apellidos' => $request->apellidos,
+            'cedula' => $request->cedula,
+            'telefono' => $request->telefono,
             'email' => $request->email,
             'password' => Hash::make($request->password),
             'remember_token' => $request->remember_token,
@@ -121,14 +139,12 @@ class ClientesController extends Controller
         return redirect()->route('admin.clientes.index');
     }*/
 
-    public function perfiClientes()
+    public function perfilClientes()
 {
-    $useremail = session('user_email');
-    $cliente = Cliente::where('email', $useremail)->first();
-
-    if ($cliente) {
+    $userEmail = session('user_email');
+    $cliente = Cliente::where('email', $userEmail)->first();
+    if ($cliente && $cliente->id) {
         session(['user_id' => $cliente->id]);
-
         $data = [
             'title' => 'Perfil de usuario',
             'keyword' => 'palabras clave',
@@ -136,11 +152,10 @@ class ClientesController extends Controller
             'layout_page' => 'perfil_cliente',
             'cliente' => $cliente,
         ];
-
         return view('frontend.clientes.perfil', $data);
-    } else {
-        return redirect()->route('registraCliente')->with('error', 'No se encontró el perfil del cliente');
     }
+
+    return redirect()->route('registraCliente')->with('error', 'No se encontró el perfil del cliente');
 }
 
    

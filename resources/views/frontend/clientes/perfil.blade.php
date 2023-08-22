@@ -467,7 +467,7 @@
                             </li>
 
                             </li>
-                            <li>Phone number <span>+00 032 42366</span>
+                            <li>Phone number <span>{{$cliente->telefono}}</span>
                             </li>
                            
                            

@@ -6,16 +6,14 @@ Route::get('/', 'HomeController@index')->name('home');
 Auth::routes(['register' => false]);
 
 //GRUPO DE FRONT
-Route::group(['prefix' => 'cliente', 'namespace' => 'Frontend'], function () {
+Route::prefix('cliente')->namespace('Frontend')->group(function () {
     Route::get('registrar', 'ClientesController@create')->name('registraCliente');
-
-    Route::group(['middleware' => 'cliente'], function () {
-        Route::get('perfil', 'ClientesController@perfiClientes')->name('perfilCliente');
+    Route::post('login', 'CustomAuthController@login')->name('login');
+    Route::middleware('cliente')->group(function () {
+        Route::get('perfil', 'ClientesController@perfilClientes')->name('perfilCliente');
         Route::get('logout', 'CustomAuthController@logout')->name('logout');
-        Route::post('login', 'CustomAuthController@login')->name('login');
     });
     Route::get('paquetes', 'HomeController@home')->name('paquetes');
-    
 });
 
 

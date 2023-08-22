@@ -16,8 +16,6 @@ class Cliente extends  Authenticatable
 {
     use SoftDeletes, Notifiable, HasFactory;
 
-   
-
     public $table = 'clientes';
 
     protected $hidden = [

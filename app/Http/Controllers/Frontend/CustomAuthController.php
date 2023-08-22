@@ -21,14 +21,11 @@ class CustomAuthController extends Controller
     public function login(Request $request)
 {
     $credentials = $request->only('email', 'password');
-
     if (Auth::guard('cliente')->attempt($credentials)) {
         session([
-            'user_password' => $credentials['password'],
             'user_email' => $credentials['email'],
         ]);
-
-        return redirect()->route('perfilCliente');
+        return redirect()->route('perfilCliente')->with('success_message', 'Inicio de sesión exitoso.');
     }
 
     return back()->withInput($request->only('email'))->with('error_message', 'Las credenciales proporcionadas no coinciden con nuestros registros.');
