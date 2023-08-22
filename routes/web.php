@@ -14,6 +14,8 @@ Route::prefix('cliente')->namespace('Frontend')->group(function () {
         Route::get('logout', 'CustomAuthController@logout')->name('logout');
     });
     Route::get('paquetes', 'HomeController@home')->name('paquetes');
+    Route::get('paquete-turistico/{id}', 'PaquetesController@show')->name('ver_paquete');
+    Route::get('paquetes-turisticos', 'PaquetesController@index')->name('lista_paquetes');
 });
 
 
