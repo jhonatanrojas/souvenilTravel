@@ -76,17 +76,20 @@ class ClientesController extends Controller
             'nombres' => 'required|string|max:255',
             'apellidos' => 'required|string|max:255',
             'cedula' => 'required|string|max:20',
-            'telefono' => 'required|string|max:20',
+            'direccion' => 'required|string|max:200',
+            'telefono' => 'required|string|max:12',
             'email' => [
                 'required',
                 'email',
                 Rule::unique('clientes'),
             ],
-            'password' => 'required|min:8|confirmed', // Cambio aquí
+            'password' => 'required|min:8|confirmed',
         ];
 
         $mensajes = [
             'nombres.required' => 'El nombre es obligatorio.',
+            'direccion.required' => 'La direccion es obligatorio.',
+            'direccion.max' => 'La direccion no debe exceder 255 caracteres.',
             'nombres.string' => 'El nombre debe ser una cadena de texto.',
             'nombres.max' => 'El nombre no debe exceder 255 caracteres.',
             'apellidos.required' => 'El apellido es obligatorio.',
@@ -94,12 +97,13 @@ class ClientesController extends Controller
             'apellidos.max' => 'El apellidos no debe exceder 255 caracteres.',
             'cedula.required' => 'La cedula es obligatoria..',
             'telefono.required' => 'El Telefono es obligatorio..',
+            'telefono.max' => 'El telefono no debe exceder 11 caracteres.',
             'email.required' => 'El correo electrónico es obligatorio.',
             'email.email' => 'El correo electrónico debe ser válido.',
             'email.unique' => 'Este correo electrónico ya ha sido registrado.',
             'password.required' => 'La contraseña es obligatoria.',
             'password.min' => 'La contraseña debe tener al menos 8 caracteres.',
-            'password.confirmed' => 'Las contraseñas no coinciden.', // Cambio aquí
+            'password.confirmed' => 'Las contraseñas no coinciden.', 
         ];
     
         $this->validate($request, $validaciones, $mensajes);
@@ -107,12 +111,13 @@ class ClientesController extends Controller
     
     protected function crearCliente(Request $request)
     {
-
         return Cliente::create([
             'nombres' => $request->nombres,
             'apellidos' => $request->apellidos,
             'cedula' => $request->cedula,
+            'nacionalidad' => $request->nacionalidad,
             'telefono' => $request->telefono,
+            'direccion' => $request->direccion,
             'email' => $request->email,
             'password' => Hash::make($request->password),
             'remember_token' => $request->remember_token,

@@ -29,6 +29,8 @@
         rel="stylesheet">
         <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 
+        
+
 
     <!-- COMMON CSS -->
     <link href="{{ asset('template/css/bootstrap.min.css') }}" rel="stylesheet">
@@ -287,8 +289,8 @@
 
 <!-- Sign In Popup -->
 <div id="sign-in-dialog" class="zoom-anim-dialog mfp-hide">
-<div class="small-dialog-header">
-    <h3>{{  sc_language_render('Inicio')}}</h3>
+<div class="small-dialog-header text-center">
+    <img src="{{ asset('souvenir.png')}}" width="160" height="34" alt="Souvenir logo">
 </div>
 <form method="POST" action="{{ route('login') }}">
     @csrf
@@ -298,17 +300,17 @@
          <a href="#0" class="social_bt facebook">Login with Facebook</a>
           
           -->
-          <a href="#0" class="social_bt google">Login with Google</a>
+          <a href="#0" class="social_bt google">Incia session con  Google</a>
        
         <div class="divider"><span>Or</span></div>
         <div class="form-group">
             <label>Correo</label>
-            <input type="email" class="form-control" name="email" id="email">
+            <input required type="email" class="form-control" name="email" id="email">
             <i class="icon_mail_alt"></i>
         </div>
         <div class="form-group">
             <label>Contraseña</label>
-            <input type="password" class="form-control" name="password" id="password" value="">
+            <input required type="password" class="form-control" name="password" id="password" value="">
             <i class="icon_lock_alt"></i>
         </div>
         <div class="clearfix add_bottom_15">
@@ -318,11 +320,11 @@
                     <span class="checkmark"></span>
                 </label>
             </div>
-            <div class="float-end"><a id="forgot" href="javascript:void(0);">Has olvidado tu contraseña?</a></div>
+            <div class="float-end"><a id="" href="#">Has olvidado tu contraseña?</a></div>
         </div>
         <div class="text-center"><button type="submit" class="btn_login">Iniciar sesión</button></div>
         <div class="text-center">
-            No tengo una cuenta? <a href="{{ route('registraCliente') }}">regitrate</a>
+            No tengo una cuenta? <a href="{{ route('registraCliente') }}">registrate</a>
         </div>
         <div id="forgot_pw">
             <div class="form-group">
@@ -335,6 +337,16 @@
             <div class="text-center"><input type="submit" value="Reset Password" class="btn_1"></div>
         </div>
     </div>
+
+        <script>
+    @if(session('error_message'))
+        Swal.fire({
+            icon: 'error',
+            title: 'Error',
+            text: '{{ session('error_message') }}',
+        });
+    @endif
+</script>
 </form>
 <!--form -->
 </div>
@@ -364,6 +376,9 @@
             $(this).val('');
         });
     });
+
+
+
 </script>
 
 <!-- Input quantity  -->
@@ -397,6 +412,8 @@
 </script>
 
 <script>
+
+
     document.addEventListener('DOMContentLoaded', () => {
         let cartItemsElement = document.getElementById('cartItems');
         const cartItemCountElement = document.getElementById('cartItemCount');

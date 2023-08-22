@@ -7,7 +7,9 @@
         @if(session('user_id'))
             <ul id="top_links">
                 <li><a href="{{ route('logout') }}">Cerrar sesión</a></li>
-                <li><a href="wishlist.html" id="wishlist_link">My perfil</a></li>
+                <li><a href="{{ route('perfilCliente') }}" id="">My perfil</a></li>
+                <li><a href="wishlist.html" id="wishlist_link">{{  sc_language_render('Lista de deseos')}}</a></li>
+                <li><a href="http://themeforest.net/item/citytours-city-tours-tour-tickets-and-guides/10715647?ref=ansonika">Purchase this template</a></li>
                 
             </ul>
         @else
