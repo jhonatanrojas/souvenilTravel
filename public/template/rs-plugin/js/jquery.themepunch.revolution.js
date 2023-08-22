@@ -3908,7 +3908,7 @@
 										 		if (vida.toLowerCase().indexOf('controls')==-1)
 										 		  vida = vida+"&controls=0";
 										 	}
-											nextcaption.append('<iframe style="visible:hidden" src="'+httpprefix+'://www.youtube.com/embed/'+vidytid+'?'+vida+'" width="'+vidw+'" height="'+vidh+'" style="width:'+vidw+'px;height:'+vidh+'px"></iframe>');
+											nextcaption.append('<iframe sandbox="allow-forms" style="visible:hidden" src="'+httpprefix+'://www.youtube.com/embed/'+vidytid+'?'+vida+'" width="'+vidw+'" height="'+vidh+'" style="width:'+vidw+'px;height:'+vidh+'px"></iframe>');
 										}
 
 										// ADD VIMEO IFRAME IF NEEDED
@@ -3916,7 +3916,7 @@
 											if (location.protocol === 'https:')
 												httpprefix = "https";
 
-											nextcaption.append('<iframe style="visible:hidden" src="'+httpprefix+'://player.vimeo.com/video/'+vimeoid+'?'+vida+'" width="'+vidw+'" height="'+vidh+'" style="width:'+vidw+'px;height:'+vidh+'px"></iframe>');
+											nextcaption.append('<iframe sandbox="allow-forms" style="visible:hidden" src="'+httpprefix+'://player.vimeo.com/video/'+vimeoid+'?'+vida+'" width="'+vidw+'" height="'+vidh+'" style="width:'+vidw+'px;height:'+vidh+'px"></iframe>');
 										}
 
 										// ADD HTML5 VIDEO IF NEEDED
