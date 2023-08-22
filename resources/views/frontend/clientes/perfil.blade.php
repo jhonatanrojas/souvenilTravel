@@ -459,15 +459,15 @@
             <section id="section-4">
                 <div class="row">
                     <div class="col-md-6">
-                        <h4>Perfil</h4>
+                        <h4>{{  sc_language_render('title_perfil')}}</h4>
                         <ul id="profile_summary">
-                            <li>Username <span>{{$cliente->nombres}}</span>
+                            <li>{{  sc_language_render('nombre_perfil')}} <span>{{$cliente->nombres}}</span>
                             </li>
-                            <li>First name <span>{{$cliente->apellidos}}</span>
+                            <li>{{  sc_language_render('apellido_perfil')}} <span>{{$cliente->apellidos}}</span>
                             </li>
 
                             </li>
-                            <li>Phone number <span>{{$cliente->telefono}}</span>
+                            <li>{{  sc_language_render('telefono_perfil')}} <span>{{$cliente->telefono}}</span>
                             </li>
                            
                            
@@ -487,17 +487,17 @@
 
                 <div class="row">
                     <div class="col-md-12">
-                        <h4>Edit profile</h4>
+                        <h4>{{  sc_language_render('editar_perfil')}}</h4>
                     </div>
                     <div class="col-md-6">
                         <div class="form-group">
-                            <label>First name</label>
+                            <label>{{  sc_language_render('nombre_perfil')}}</label>
                             <input class="form-control" name="first_name" id="first_name" type="text">
                         </div>
                     </div>
                     <div class="col-md-6">
                         <div class="form-group">
-                            <label>Last name</label>
+                            <label>{{  sc_language_render('apellido_perfil')}}</label>
                             <input class="form-control" name="last_name" id="last_name" type="text">
                         </div>
                     </div>
@@ -507,7 +507,7 @@
                 <div class="row">
                     <div class="col-md-6">
                         <div class="form-group">
-                            <label>Phone number</label>
+                            <label>{{  sc_language_render('telefono_perfil')}}</label>
                             <input class="form-control" name="email_2" id="email_2" type="text">
                         </div>
                     </div>
@@ -560,35 +560,41 @@
                 <!-- End row -->
 
                 <hr>
-                <h4>Upload profile photo</h4>
+                <!--<h4>Upload profile photo</h4>
                 <div class="form-inline upload_1">
                     <div class="form-group">
                         <input type="file" name="files[]" id="js-upload-files" multiple>
                     </div>
                     <button type="submit" class="btn_1 green" id="js-upload-submit">Upload file</button>
-                </div>
-                    <!-- Drop Zone -->
-                    <h5>Or drag and drop files below</h5>
+                </div> -->
+                    <!-- Drop Zone
+                     <h5>Or drag and drop files below</h5>
                     <div class="upload-drop-zone" id="drop-zone">
                         Just drag and drop files here
-                    </div>
-                    <!-- Progress Bar -->
-                    <div class="progress">
+                    </div> -->
+                   
+                    <!-- Progress Bar
+                        <div class="progress">
                         <div class="progress-bar" role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100" style="width: 60%;">
                             <span class="sr-only">60% Complete</span>
                         </div>
                     </div>
-                    <!-- Upload Finished -->
+                  
+                    
+                     -->
+                       <!-- Upload Finished
+                    
                     <div class="js-upload-finished">
                         <h5>Processed files</h5>
                         <div class="list-group">
                             <a href="#" class="list-group-item list-group-item-success"><span class="badge alert-success pull-right">Success</span>image-01.jpg</a>
                         </div>
-                    </div>
+                    </div>  -->
+                    
                     <!-- End Hidden on mobiles -->
 
                     <hr>
-                    <button type="submit" class="btn_1 green">Update Profile</button>
+                    <button type="submit" class="btn_1 green">{{  sc_language_render('actualizar_perfil')}}</button>
             </section>
             <!-- End section 4 -->
 
