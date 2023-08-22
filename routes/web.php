@@ -13,18 +13,13 @@ Route::prefix('cliente')->namespace('Frontend')->group(function () {
         Route::get('perfil', 'ClientesController@perfilClientes')->name('perfilCliente');
         Route::get('logout', 'CustomAuthController@logout')->name('logout');
     });
-
-    Route::group(['as' => '/', 'namespace' => 'Frontend' ], function () {
-    Route::get('paquete-turistico/{id}', 'PaquetesController@show')->name('ver_paquete');
-    Route::get('paquetes-turisticos', 'PaquetesController@index')->name('lista_paquetes');
-});
-
 });
 
 
-
-
-
+Route::group(['as' => '/', 'namespace' => 'Frontend' ], function () {
+     Route::get('paquete-turistico/{id}', 'PaquetesController@show')->name('ver_paquete');
+     Route::get('paquetes-turisticos', 'PaquetesController@index')->name('lista_paquetes');
+ });
 
 
 Route::post('registrarCliente', [ClientesController::class , 'registrarCliente'])->name('registrarCliente');
