@@ -41,6 +41,9 @@
     <link href="{{ asset('css/custom.css') }}" rel="stylesheet">
 
     <link href="{{ asset('template/css/colors/color-morado.css') }}" rel="stylesheet">
+
+
+
     <style>
         #logo_home h1 a,
         header.sticky #logo_home h1 a,

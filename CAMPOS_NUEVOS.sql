@@ -1,0 +1,7 @@
+ALTER TABLE enlaces ADD COLUMN icono VARCHAR(255)
+ ALTER TABLE enlaces  ADD COLUMN orden integer DEFAULT 0
+ ALTER TABLE products ADD COLUMN destacado VARCHAR(150)
+
+
+
+ 
