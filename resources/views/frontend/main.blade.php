@@ -29,6 +29,8 @@
         rel="stylesheet">
         <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 
+        
+
 
     <!-- COMMON CSS -->
     <link href="{{ asset('template/css/bootstrap.min.css') }}" rel="stylesheet">
@@ -287,40 +289,46 @@
 
 <!-- Sign In Popup -->
 <div id="sign-in-dialog" class="zoom-anim-dialog mfp-hide">
-<div class="small-dialog-header">
-    <h3>Sign In</h3>
+<div class="small-dialog-header text-center">
+    <img src="{{ asset('souvenir.png')}}" width="160" height="34" alt="Souvenir logo">
 </div>
-<form>
+<form method="POST" action="{{ route('login') }}">
+    @csrf
     <div class="sign-in-wrapper">
-        <a href="#0" class="social_bt facebook">Login with Facebook</a>
-        <a href="#0" class="social_bt google">Login with Google</a>
+        
+         <!--
+         <a href="#0" class="social_bt facebook">Login with Facebook</a>
+          
+          -->
+          <a href="#0" class="social_bt google">Incia session con  Google</a>
+       
         <div class="divider"><span>Or</span></div>
         <div class="form-group">
-            <label>Email</label>
-            <input type="email" class="form-control" name="email" id="email">
+            <label>Correo</label>
+            <input required type="email" class="form-control" name="email" id="email">
             <i class="icon_mail_alt"></i>
         </div>
         <div class="form-group">
-            <label>Password</label>
-            <input type="password" class="form-control" name="password" id="password" value="">
+            <label>Contraseña</label>
+            <input required type="password" class="form-control" name="password" id="password" value="">
             <i class="icon_lock_alt"></i>
         </div>
         <div class="clearfix add_bottom_15">
             <div class="checkboxes float-start">
-                <label class="container_check">Remember me
-                    <input type="checkbox">
+                <label class="container_check">Acuérdate de mí
+                    <input type="checkbox" name="remember">
                     <span class="checkmark"></span>
                 </label>
             </div>
-            <div class="float-end"><a id="forgot" href="javascript:void(0);">Forgot Password?</a></div>
+            <div class="float-end"><a id="" href="#">Has olvidado tu contraseña?</a></div>
         </div>
-        <div class="text-center"><input type="submit" value="Log In" class="btn_login"></div>
+        <div class="text-center"><button type="submit" class="btn_login">Iniciar sesión</button></div>
         <div class="text-center">
-            Don’t have an account? <a href="javascript:void(0);">Sign up</a>
+            No tengo una cuenta? <a href="{{ route('registraCliente') }}">registrate</a>
         </div>
         <div id="forgot_pw">
             <div class="form-group">
-                <label>Please confirm login email below</label>
+                <label>Confirme el correo electrónico de inicio de sesión a continuación</label>
                 <input type="email" class="form-control" name="email_forgot" id="email_forgot">
                 <i class="icon_mail_alt"></i>
             </div>
@@ -329,6 +337,16 @@
             <div class="text-center"><input type="submit" value="Reset Password" class="btn_1"></div>
         </div>
     </div>
+
+        <script>
+    @if(session('error_message'))
+        Swal.fire({
+            icon: 'error',
+            title: 'Error',
+            text: '{{ session('error_message') }}',
+        });
+    @endif
+</script>
 </form>
 <!--form -->
 </div>
@@ -358,6 +376,9 @@
             $(this).val('');
         });
     });
+
+
+
 </script>
 
 <!-- Input quantity  -->
@@ -391,6 +412,8 @@
 </script>
 
 <script>
+
+
     document.addEventListener('DOMContentLoaded', () => {
         let cartItemsElement = document.getElementById('cartItems');
         const cartItemCountElement = document.getElementById('cartItemCount');
