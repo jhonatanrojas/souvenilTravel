@@ -18,19 +18,13 @@
 
                 <div class="box_style_cat">
                     <ul id="cat_nav">
-                        <li><a href="#" id="active"><i class="icon_set_1_icon-51"></i>Todos los tours
-                                <span>(141)</span></a>
+                        @foreach ($productCategory as  $categoria)
+                            
+        
+                        <li><a href="{{ route('/lista_paquetes',['id_destino'=> $id_destino,'id_categoria'=>$categoria->id]) }}" id="active"><i class="icon_set_1_icon-51"></i>{{$categoria->name}}
+                                </a>
                         </li>
-                        <li><a href="#"><i class="icon_set_1_icon-3"></i>Visitas Guiadas <span>(20)</span></a>
-                        </li>
-                        <li><a href="#"><i class="icon_set_1_icon-4"></i>Muesos <span>(16)</span></a>
-                        </li>
-                        <li><a href="#"><i class="icon_set_1_icon-44"></i>Monumento Historicos <span>(12)</span></a>
-                        </li>
-                        <li><a href="#"><i class="icon_set_1_icon-37"></i>Playas<span>(11)</span></a>
-                        </li>
-                        <li><a href="#"><i class="icon_set_1_icon-14"></i>Comida y bebida <span>(20)</span></a>
-                        </li>
+                        @endforeach
 
                     </ul>
                 </div>
@@ -153,24 +147,24 @@
                                     <a class="tooltip_flip tooltip-effect-1" href="javascript:void(0);">+<span
                                             class="tooltip-content-flip"><span class="tooltip-back">Agregar a
                                                 favoritos</span></span></a>
-                              
+
 
                                 </div>
 
 
-                                     
+
 
                                 <div class="img_list">
                                     @php
-                                    $urlImagen='';
+                                        $urlImagen = '';
                                     @endphp
                                     <a href="{{ route('/ver_paquete', $product->id) }}">
                                         @foreach ($product->photo as $key => $media)
                                             <img src="{{ $media->getUrl() }}" width="800" height="533"
                                                 class="" alt="image">
-                                                @php
-                                                $urlImagen=$media->getUrl('thumb');
-                                                @endphp 
+                                            @php
+                                                $urlImagen = $media->getUrl('thumb');
+                                            @endphp
                                         @break
                                     @endforeach
                                 </a>
@@ -185,7 +179,7 @@
                                 <h3><strong>
                                         {{ $product->name }}
                                     </strong> </h3>
-                                {!! $product->description !!}
+                                {!! substr($product->resumen, 0, 150) !!} ...
 
                             </div>
                         </div>
@@ -202,22 +196,17 @@
                                     <small>*
                                     </small>
                                     <p>
-                                        <a
-                                        data-id="{{ $product->id }}"
-                                        data-name="{{ $product->name }}"
-                                        data-price="{{ $product->price }}"
-                                        data-image="{{ $urlImagen}}"
-
-
-                                         class="btn_full_outline p-2 mb-1 add-to-cart" 
-                                        style="font-size:10px"
-                                         href="javascript:void(0);"><i class=" icon-cart"></i> Añadir al
-                                           Carrito</a>     </p>
+                                        <a data-id="{{ $product->id }}" data-name="{{ $product->name }}"
+                                            data-price="{{ $product->price }}" data-image="{{ $urlImagen }}"
+                                            class="btn_full_outline p-2 mb-1 add-to-cart" style="font-size:10px"
+                                            href="javascript:void(0);"><i class=" icon-cart"></i> Añadir al
+                                            Carrito</a>
+                                    </p>
                                     <p><a href="{{ route('/ver_paquete', $product->id) }}" class="btn_full">Ver
                                             detalle</a>
                                     </p>
 
-                              
+
                                 </div>
 
 
@@ -242,6 +231,9 @@
             <!--End strip -->
 
 
+            <p class="text-center ">
+                <a href="{{ route('/listCarrito') }}" class="btn_1">{{ sc_language_render('Ir al carrito') }}</a>
+            </p>
             <!-- Coloca esta sección en la ubicación deseada dentro de tu vista -->
             <nav aria-label="Page navigation">
                 <ul class="pagination justify-content-center">
@@ -287,6 +279,7 @@
                     @endif
                 </ul>
             </nav>
+
 
             <!-- end pagination-->
 

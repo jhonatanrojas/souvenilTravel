@@ -412,7 +412,7 @@
                                         <i class="icon_set_1_icon-33"></i>
                                     </td>
                                     <td style="width:60%">
-                                        New Citytours Tours
+                                        New Souvenir Tours
                                     </td>
                                     <td style="width:35%">
                                         <label class="switch-light switch-ios pull-right">
@@ -430,7 +430,7 @@
                                         <i class="icon_set_1_icon-6"></i>
                                     </td>
                                     <td>
-                                        New Citytours Hotels
+                                        New Souvenir Hotels
                                     </td>
                                     <td>
                                         <label class="switch-light switch-ios pull-right">
@@ -448,7 +448,7 @@
                                         <i class="icon_set_1_icon-26"></i>
                                     </td>
                                     <td>
-                                        New Citytours Transfers
+                                        New Souvenir Transfers
                                     </td>
                                     <td>
                                         <label class="switch-light switch-ios pull-right">
@@ -466,7 +466,7 @@
                                         <i class="icon_set_1_icon-81"></i>
                                     </td>
                                     <td>
-                                        New Citytours special offers
+                                        New Souvenir special offers
                                     </td>
                                     <td>
                                         <label class="switch-light switch-ios pull-right">

@@ -107,6 +107,9 @@
                                             {{ trans('cruds.productCategory.title') }}
                                         </a>
                                     @endcan
+                                    <a class="dropdown-item ml-3" href="{{ route('Subcategoria') }}">
+                                        {{ trans('Subcategoria') }}
+                                    </a>
                                     @can('product_tag_access')
                                         <a class="dropdown-item ml-3" href="{{ route('frontend.product-tags.index') }}">
                                             {{ trans('cruds.productTag.title') }}

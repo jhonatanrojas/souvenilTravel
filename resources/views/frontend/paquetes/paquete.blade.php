@@ -11,8 +11,8 @@
 <div class="container margin_60">
     <div class="row">
         <div class="col-lg-8" id="single_tour_desc">
-            <div id="single_tour_feat">
-                <ul>
+          <!--   <div id="single_tour_feat">
+               <ul>
                     <li><i class="icon_set_1_icon-4"></i>Museo</li>
                     <li><i class="icon_set_1_icon-83"></i>3 Horas</li>
                     <li><i class="icon_set_1_icon-13"></i>Accesibilidad</li>
@@ -23,7 +23,7 @@
                     <li><i class="icon_set_1_icon-29"></i>Guía
                     </li>
                 </ul>
-            </div>
+            </div>-->
 
             <p class="d-block d-lg-none"><a class="btn_map" data-bs-toggle="collapse" href="#collapseMap" aria-expanded="false" aria-controls="collapseMap" data-text-swap="Hide map" data-text-original="Ver el mapa">Ver el mapa</a></p>
             <!-- Map button for tablets/mobiles -->
@@ -56,40 +56,20 @@
                 </div>
                 <div class="col-lg-9">
                     <h4>{{ $product->name}}</h4>
-                   
+                    <hr>
+                    <h4>Que incluye</h4>
                         {!! $product->description!!}
                   
-                    <h4>Que incluye</h4>
-                    <p>
-                        Lorem ipsum dolor sit amet, at omnes deseruisse pri. Quo aeterno legimus insolens ad. Sit cu detraxit constituam, an mel iudico constituto efficiendi.
-                    </p>
-                    <div class="row">
-                        <div class="col-md-6">
-                            <ul class="list_ok">
-                                <li>Lorem ipsum dolor sit amet</li>
-                                <li>No scripta electram necessitatibus sit</li>
-                                <li>Quidam percipitur instructior an eum</li>
-                                <li>Ut est saepe munere ceteros</li>
-                                <li>No scripta electram necessitatibus sit</li>
-                                <li>Quidam percipitur instructior an eum</li>
-                            </ul>
-                        </div>
-                        <div class="col-md-6">
-                            <ul class="list_ok">
-                                <li>Lorem ipsum dolor sit amet</li>
-                                <li>No scripta electram necessitatibus sit</li>
-                                <li>Quidam percipitur instructior an eum</li>
-                                <li>No scripta electram necessitatibus sit</li>
-                            </ul>
-                        </div>
-                    </div>
+  
+                 
+                   
                     <!-- End row  -->
                 </div>
             </div>
             <hr>
        
             <hr>
-            <div class="row">
+        {{--    <div class="row">
                 <div class="col-lg-3">
                     <h3>Comentarios
                     </h3>
@@ -173,7 +153,7 @@
                     </div>
                     <!-- End review strip -->
                 </div>
-            </div>
+            </div> --}}
         </div>
         <!--End  single_tour_desc-->
 
@@ -253,9 +233,14 @@
                             </tr>
                         </tbody>
                     </table>
-                    <a class="btn_full" href="cart.html">Reservar ahora</a>
-                    <a class="btn_full_outline" href="#"><i class=" icon-heart"></i> Añadir a favoritos</a>
-                    <a class="btn_full_outline mt-2" href="#"><i class=" icon-cart"></i> Añadir al Carrito</a>
+                    <a class="btn_full" href="{{route('/listCarrito')}}">Reservar ahora</a>
+                    <a class="btn_full_outline" 
+                    
+                    href="#"><i class=" icon-heart"></i> Añadir a favoritos</a>
+                    <a class="btn_full_outline mt-2 add-to-cart" 
+                    data-id="{{ $product->id }}" data-name="{{ $product->name }}"
+                                            data-price="{{ $product->price }}"
+                    href="#"><i class=" icon-cart"></i> Añadir al Carrito</a>
                 </div>
                 <!--/box_style_1 -->
             </div>

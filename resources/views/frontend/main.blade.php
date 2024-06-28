@@ -1,10 +1,10 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="description" content="Citytours - Premium site template for city tours agencies, transfers and tickets.">
+    <meta name="description" content="Souvenir - Turismo en venezuela.">
     <meta name="author" content="Souvenir">
     <meta property="og:url" content="{{ \Request::fullUrl() }}" />
     <link rel="canonical" href="{{ request()->url() }}" />
@@ -27,9 +27,9 @@
     <link
         href="https://fonts.googleapis.com/css2?family=Gochi+Hand&family=Montserrat:wght@300;400;500;600;700&display=swap"
         rel="stylesheet">
-        <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 
-        
+
 
 
     <!-- COMMON CSS -->
@@ -41,7 +41,8 @@
     <link href="{{ asset('css/custom.css') }}" rel="stylesheet">
 
     <link href="{{ asset('template/css/colors/color-morado.css') }}" rel="stylesheet">
-
+    <link href="{{ asset('layerslider/css/layerslider.css') }}" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 
 
     <style>
@@ -52,7 +53,7 @@
             width: 160px;
             height: 34px;
             display: block;
-            background-image: url({{ asset('souvenir.png') }});
+            background-image: url({{ asset('prueba_1.png') }});
             background-repeat: no-repeat;
             background-position: left top;
             background-size: 160px 34px;
@@ -60,15 +61,15 @@
         }
 
         header.sticky #logo_home h1 a {
-            background-image: url({{ asset('souvenir.png') }});
+            background-image: url({{ asset('prueba_1.png') }});
         }
 
         header#plain #logo_home h1 a {
-            background-image: url({{ asset('souvenir.png') }});
+            background-image: url({{ asset('prueba_1.png') }});
         }
 
         header.sticky#colored #logo_home h1 a {
-            background-image: url({{ asset('souvenir.png') }});
+            background-image: url({{ asset('prueba_1.png') }});
         }
 
         header.sticky #logo_home h1 {
@@ -216,45 +217,44 @@
 <div class="container">
     <div class="row">
         <div class="col-md-4">
-            <h3>Need help?</h3>
+            <h3>Necesitas Ayuda?</h3>
             <a href="tel://004542344599" id="phone">+45 423 445 99</a>
-            <a href="mailto:help@citytours.com" id="email_footer">help@citytours.com</a>
+            <a href="mailto:help@Souvenir.com" id="email_footer">help@Souvenir.com</a>
         </div>
         <div class="col-md-3">
-            <h3>About</h3>
+            <h3>Sobre</h3>
             <ul>
-                <li><a href="#">About us</a></li>
+                <li><a href="#">Sobre Nosotros</a></li>
                 <li><a href="#">FAQ</a></li>
-                <li><a href="#">Login</a></li>
-                <li><a href="#">Register</a></li>
-                <li><a href="#">Terms and condition</a></li>
+                <li><a href="#">Iniciar Sesion</a></li>
+                <li><a href="#">Registrar</a></li>
+                <li><a href="#">Terminos y Condiciones</a></li>
             </ul>
         </div>
         <div class="col-md-3">
-            <h3>Discover</h3>
+            <h3>Descubrir</h3>
             <ul>
-                <li><a href="#">Community blog</a></li>
-                <li><a href="#">Tour guide</a></li>
-                <li><a href="#">Wishlist</a></li>
-                <li><a href="#">Gallery</a></li>
+
+
+                <li><a href="#">Favoritos</a></li>
+                <li><a href="#">Galleria</a></li>
             </ul>
         </div>
         <div class="col-md-2">
             <h3>Settings</h3>
             <div class="styled-select">
                 <select name="lang" id="lang">
-                    <option value="English" selected>English</option>
-                    <option value="French">French</option>
                     <option value="Spanish">Spanish</option>
+                    <option value="English" selected>English</option>
+
+
                     <option value="Russian">Russian</option>
                 </select>
             </div>
             <div class="styled-select">
                 <select name="currency" id="currency">
                     <option value="USD" selected>USD</option>
-                    <option value="EUR">EUR</option>
-                    <option value="GBP">GBP</option>
-                    <option value="RUB">RUB</option>
+
                 </select>
             </div>
         </div>
@@ -271,7 +271,7 @@
                     <li><a href="#"><i class="icon-vimeo"></i></a></li>
                     <li><a href="#"><i class="icon-youtube-play"></i></a></li>
                 </ul>
-                <p>© Citytours 2022</p>
+                <p>© Souvenir 2022</p>
             </div>
         </div>
     </div><!-- End row -->
@@ -293,18 +293,17 @@
 <!-- Sign In Popup -->
 <div id="sign-in-dialog" class="zoom-anim-dialog mfp-hide">
 <div class="small-dialog-header text-center">
-    <img src="{{ asset('souvenir.png')}}" width="160" height="34" alt="Souvenir logo">
+    <img src="{{ asset('souvenir.png') }}" width="160" height="34" alt="Souvenir logo">
 </div>
 <form method="POST" action="{{ route('login') }}">
     @csrf
     <div class="sign-in-wrapper">
-        
-         <!--
-         <a href="#0" class="social_bt facebook">Login with Facebook</a>
-          
-          -->
-          <a href="#0" class="social_bt google">Incia session con  Google</a>
-       
+
+        <!--
+<a href="#0" class="social_bt facebook">Login with Facebook</a>
+-->
+        <a href="#0" class="social_bt google">Incia session con Google</a>
+
         <div class="divider"><span>Or</span></div>
         <div class="form-group">
             <label>Correo</label>
@@ -313,7 +312,8 @@
         </div>
         <div class="form-group">
             <label>Contraseña</label>
-            <input required type="password" class="form-control" name="password" id="password" value="">
+            <input required type="password" class="form-control" name="password" id="password"
+                value="">
             <i class="icon_lock_alt"></i>
         </div>
         <div class="clearfix add_bottom_15">
@@ -341,15 +341,15 @@
         </div>
     </div>
 
-        <script>
-    @if(session('error_message'))
-        Swal.fire({
-            icon: 'error',
-            title: 'Error',
-            text: '{{ session('error_message') }}',
-        });
-    @endif
-</script>
+    <script>
+        @if (session('error_message'))
+            Swal.fire({
+                icon: 'error',
+                title: 'Error',
+                text: '{{ session('error_message') }}',
+            });
+        @endif
+    </script>
 </form>
 <!--form -->
 </div>
@@ -359,7 +359,7 @@
 <script src="{{ asset('template/js/jquery-3.7.0.min.js') }}"></script>
 <script src="{{ asset('template/js/common_scripts_min.js') }}"></script>
 <script src="{{ asset('template/js/functions.js') }}"></script>
-
+<script src="{{ asset('template/js/jquery-migrate.min.js') }}"></script>
 <!-- DATEPICKER  -->
 <script>
     $(function() {
@@ -379,9 +379,6 @@
             $(this).val('');
         });
     });
-
-
-
 </script>
 
 <!-- Input quantity  -->
@@ -415,85 +412,125 @@
 </script>
 
 <script>
+    let cartItemsElement = document.getElementById('cartItems');
+    const cartItemCountElement = document.getElementById('cartItemCount');
+    const cartTotalElement = document.getElementById('cartTotal');
+    // Obtener productos del localStorage o inicializar un array vacío
+    let cartItems = JSON.parse(localStorage.getItem('cartItems')) || [];
+    // Evento para agregar producto al hacer clic en "Añadir al carrito"
+    const addToCartButtons = document.querySelectorAll('.add-to-cart');
+    // Función para actualizar el carrito en el HTML y localStorage
+    function updateCart() {
+        let innerHTML = ''
+        cartItemsElement.innerHTML = ``;
+        let total = 0;
 
+        cartItems.forEach(item => {
 
-    document.addEventListener('DOMContentLoaded', () => {
-        let cartItemsElement = document.getElementById('cartItems');
-        const cartItemCountElement = document.getElementById('cartItemCount');
-        const cartTotalElement = document.getElementById('cartTotal');
-
-        // Obtener productos del localStorage o inicializar un array vacío
-        let cartItems = JSON.parse(localStorage.getItem('cartItems')) || [];
-
-        // Función para actualizar el carrito en el HTML y localStorage
-        function updateCart() {
-            let innerHTML=''
-            cartItemsElement.innerHTML =``;
-            let total = 0;
-
-            cartItems.forEach(item => {
-  
-                innerHTML += `<li>
+            innerHTML += `<li>
               
                               
              
-              <strong><a href="#" class="text-dark">${item.name}</a> ${item.quantity}x $${item.price.toFixed(2)}</strong>
-              <a href="#" class="action delete-item" data-id="${item.id}"><i class="icon-trash text-dark"></i></a></li>
-          `;
-            
-                total += item.price * item.quantity;
-            });
-
-            innerHTML  +=` <li>
-                                    <div>Total: <span id="cartTotal">$${total.toFixed(2)}</span></div>
-                                    <a href="cart.html" class="button_drop">Ir al carrito</a>
-                                    <a href="payment.html" class="button_drop outline">Reservar</a>
-                                </li>`;
-$('#cartItems').html(innerHTML)
+              <strong><a href="#" class="text-dark delete-item"  data-id="${item.id}">${item.name}</a> ${item.quantity}x $${item.price.toFixed(2)}</strong>
+              <a href="#" class="action delete-item"  data-id="${item.id}"><i data-id="${item.id}" class="icon-trash text-dark delete-item"></i></a>
              
-            cartItemCountElement.textContent = cartItems.length;
+              </li>
+          `;
 
-            // Actualizar el localStorage
-            localStorage.setItem('cartItems', JSON.stringify(cartItems));
+            total += item.price * item.quantity;
+        });
+
+        innerHTML += ` <li>
+                                    <div>Total: <span id="cartTotal">$${total.toFixed(2)}</span></div>
+                             
+                                    <a href="{{route('/listCarrito')}}" class="button_drop outline">Reservar</a>
+                                </li>`;
+        $('#cartItems').html(innerHTML)
+
+        cartItemCountElement.textContent = cartItems.length;
+
+        // Actualizar el localStorage
+        localStorage.setItem('cartItems', JSON.stringify(cartItems));
+    }
+
+    function clearCart() {
+        cartItems = [];
+        updateCart();
+    }
+
+    // Evento para limpiar el carrito al hacer clic en "Limpiar carrito"
+    /* const clearCartButton = document.getElementById('clearCartButton'); // Agrega el ID al botón en tu HTML
+     clearCartButton.addEventListener('click', () => {
+         clearCart();
+     });*/
+    // Agregar producto al carrito
+    function addToCart(product) {
+        const existingItem = cartItems.find(item => item.id === product.id);
+
+        if (existingItem) {
+            existingItem.quantity += 1;
+        } else {
+            cartItems.push({
+                id: product.id,
+                name: product.name,
+                price: product.price,
+                image: product.image,
+                quantity: 1
+            });
         }
 
-        function clearCart() {
-            cartItems = [];
-            updateCart();
-        }
+        updateCart();
 
-        // Evento para limpiar el carrito al hacer clic en "Limpiar carrito"
-       /* const clearCartButton = document.getElementById('clearCartButton'); // Agrega el ID al botón en tu HTML
-        clearCartButton.addEventListener('click', () => {
-            clearCart();
-        });*/
-        // Agregar producto al carrito
-        function addToCart(product) {
-            const existingItem = cartItems.find(item => item.id === product.id);
-
-            if (existingItem) {
-                existingItem.quantity += 1;
-            } else {
-                cartItems.push({
-                    id: product.id,
-                    name: product.name,
-                    price: product.price,
-                    image: product.image,
-                    quantity: 1
-                });
+        Swal.fire({
+            title: 'Añadido al Carrito',
+            html: 'Su producto fue añadido exitosamente',
+            timer: 2000,
+            timerProgressBar: true,
+            didOpen: () => {
+                Swal.showLoading()
+                const b = Swal.getHtmlContainer().querySelector('b')
+                timerInterval = setInterval(() => {
+                    b.textContent = Swal.getTimerLeft()
+                }, 100)
+            },
+            willClose: () => {
+                clearInterval(timerInterval)
             }
+        }).then((result) => {
+            /* Read more about handling dismissals below */
+            if (result.dismiss === Swal.DismissReason.timer) {
+                console.log('I was closed by the timer')
+            }
+        })
+    }
 
-            updateCart();
-        }
+    // Eliminar producto del carrito
+    function removeFromCart(id) {
+        cartItems = cartItems.filter(item => item.id !== id);
+        updateCart();
+    }
 
-        // Eliminar producto del carrito
-        function removeFromCart(id) {
-            cartItems = cartItems.filter(item => item.id !== id);
-            updateCart();
-        }
+    function eliminarItemCart(id) {
 
-        // Evento para agregar producto al hacer clic en "Añadir al carrito"
-        const addToCartButtons = document.querySelectorAll('.add-to-cart');
+        cartItems = cartItems.filter(item => item.id != id);
+        let total = 0;
+
+        cartItems.forEach(item => {
+            total += item.price * item.quantity;
+
+        })
+        console.log(cartItems)
+        console.log(id)
+        updateCart();
+        $('.total_productos').html(total)
+        $('#item_cart' + id).remove()
+
+    }
+    document.addEventListener('DOMContentLoaded', () => {
+
+
+
+
         addToCartButtons.forEach(button => {
             button.addEventListener('click', () => {
                 const product = {
@@ -508,13 +545,14 @@ $('#cartItems').html(innerHTML)
 
         // Evento para eliminar producto del carrito al hacer clic en el ícono de basura
         cartItemsElement.addEventListener('click', event => {
+            console.log(event.target.classList)
             if (event.target.classList.contains('delete-item')) {
                 const itemId = event.target.getAttribute('data-id');
                 removeFromCart(itemId);
             }
         });
 
-      updateCart();
+        updateCart();
     });
 </script>
 

@@ -31,6 +31,26 @@
                 <span class="help-block">{{ trans('cruds.estado.fields.nombre_helper') }}</span>
             </div>
             <div class="form-group">
+                <label for="descripcion">{{ trans('Descripcion') }}</label>
+                <input class="form-control {{ $errors->has('descripcion') ? 'is-invalid' : '' }}" type="text" name="descripcion" id="descripcion" value="{{ old('descripcion',$estado->descripcion) }}">
+                @if($errors->has('descripcion'))
+                    <div class="invalid-feedback">
+                        {{ $errors->first('descripcion') }}
+                    </div>
+                @endif
+                <span class="help-block">{{ trans('cruds.estado.fields.nombre_helper') }}</span>
+            </div>
+            <div class="form-group">
+                <label for="orden">{{ trans('Orden') }}</label>
+                <input class="form-control {{ $errors->has('orden') ? 'is-invalid' : '' }}" type="text" name="orden" id="orden" value="{{ old('orden', $estado->orden) }}">
+                @if($errors->has('orden'))
+                    <div class="invalid-feedback">
+                        {{ $errors->first('orden') }}
+                    </div>
+                @endif
+                <span class="help-block">{{ trans('Orden') }}</span>
+            </div>
+            <div class="form-group">
                 <button class="btn btn-danger" type="submit">
                     {{ trans('global.save') }}
                 </button>

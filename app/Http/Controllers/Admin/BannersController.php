@@ -12,6 +12,8 @@ use Gate;
 use Illuminate\Http\Request;
 use Spatie\MediaLibrary\MediaCollections\Models\Media;
 use Symfony\Component\HttpFoundation\Response;
+use Illuminate\Support\Facades\Storage;
+
 
 class BannersController extends Controller
 {
@@ -33,8 +35,17 @@ class BannersController extends Controller
         return view('admin.banners.create');
     }
 
+
+
+
+
+
+
     public function store(StoreBannerRequest $request)
     {
+
+
+
         $banner = Banner::create($request->all());
 
         if ($request->input('imagen', false)) {
@@ -55,12 +66,13 @@ class BannersController extends Controller
         return view('admin.banners.edit', compact('banner'));
     }
 
+
     public function update(UpdateBannerRequest $request, Banner $banner)
     {
         $banner->update($request->all());
 
         if ($request->input('imagen', false)) {
-            if (! $banner->imagen || $request->input('imagen') !== $banner->imagen->file_name) {
+            if (!$banner->imagen || $request->input('imagen') !== $banner->imagen->file_name) {
                 if ($banner->imagen) {
                     $banner->imagen->delete();
                 }

@@ -3,7 +3,13 @@ use App\Models\BloquesPagina;
 use App\Models\Enlace;
 use App\Models\Banner;
 use App\Models\Product;
+use App\Models\Destino;
+use App\Models\Estado;
+
 use Illuminate\Support\Arr;
+
+use function Laravel\Prompts\select;
+
 function listBloques()
 {
     return BloquesPagina::where('estatus', 1)
@@ -31,6 +37,26 @@ function getBanner($ubicacion='principal')
     return Banner::with(['media'])->where('ubicacion', $ubicacion)
     ->orderBy('orden', 'asc')
     ->get();
+}
+
+
+function getEstadoDestino($codigo)
+{
+return Destino::with(['media','codigo_estado'])  
+->where('codigo_estado_id',$codigo)  
+  ->get();
+
+}
+
+function getEstados()
+{
+
+    return Estado::join('destinos', 'estados.id', '=', 'destinos.codigo_estado_id')
+  ->select('estados.nombre','estados.id','estados.descripcion')
+  ->orderBy('orden')
+  ->groupBy('estados.nombre','estados.id','estados.descripcion')
+    ->get();
+  
 }
 
 

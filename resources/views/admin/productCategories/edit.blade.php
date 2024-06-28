@@ -31,6 +31,16 @@
                 <span class="help-block">{{ trans('cruds.productCategory.fields.description_helper') }}</span>
             </div>
             <div class="form-group">
+                <label for="orden">{{ trans('Orden') }}</label>
+                <input class="form-control {{ $errors->has('orden') ? 'is-invalid' : '' }}" type="text" name="orden" id="orden" value="{{ old('orden',$productCategory->orden) }}">
+                @if($errors->has('orden'))
+                    <div class="invalid-feedback">
+                        {{ $errors->first('orden') }}
+                    </div>
+                @endif
+                <span class="help-block">{{ trans('Orden') }}</span>
+            </div>
+            <div class="form-group">
                 <label for="photo">{{ trans('cruds.productCategory.fields.photo') }}</label>
                 <div class="needsclick dropzone {{ $errors->has('photo') ? 'is-invalid' : '' }}" id="photo-dropzone">
                 </div>

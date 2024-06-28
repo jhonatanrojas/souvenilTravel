@@ -52,8 +52,8 @@
                 <span class="help-block">{{ trans('cruds.banner.fields.titulo_helper') }}</span>
             </div>
             <div class="form-group">
-                <label for="html">{{ trans('cruds.banner.fields.html') }}</label>
-                <textarea class="form-control ckeditor {{ $errors->has('html') ? 'is-invalid' : '' }}" name="html" id="html">{!! old('html', $banner->html) !!}</textarea>
+                <label for="html">Subtitulo</label>
+                <textarea class="form-control  {{ $errors->has('html') ? 'is-invalid' : '' }}" name="html" id="html">{!! old('html', $banner->html) !!}</textarea>
                 @if($errors->has('html'))
                     <div class="invalid-feedback">
                         {{ $errors->first('html') }}

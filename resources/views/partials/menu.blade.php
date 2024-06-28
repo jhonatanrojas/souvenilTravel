@@ -75,6 +75,15 @@
                                 {{ trans('cruds.productCategory.title') }}
                             </a>
                         </li>
+
+                        <li class="c-sidebar-nav-item">
+                            <a href="{{ route("admin.sub-categoria.index") }}" class="c-sidebar-nav-link {{ request()->is("admin/sub-categoria") || request()->is("admin/sub-categoria/*") ? "c-active" : "" }}">
+                                <i class="fa-fw fas fa-cogs c-sidebar-nav-icon">
+
+                                </i>
+                                {{ trans('SubCategoria') }}
+                            </a>
+                        </li>
                     @endcan
                     @can('product_tag_access')
                         <li class="c-sidebar-nav-item">

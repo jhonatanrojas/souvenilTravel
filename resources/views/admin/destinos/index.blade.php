@@ -41,6 +41,12 @@
                             {{ trans('cruds.destino.fields.nombre') }}
                         </th>
                         <th>
+                            {{ trans('cruds.destino.fields.fhotos') }}
+                        </th>
+                        <th>
+                            {{ trans('cruds.destino.fields.nombre_eje') }}
+                        </th>
+                        <th>
                             &nbsp;
                         </th>
                     </tr>
@@ -68,6 +74,16 @@
                             </td>
                             <td>
                                 {{ $destino->nombre ?? '' }}
+                            </td>
+                            <td>
+                                @foreach($destino->fhotos as $key => $media)
+                                    <a href="{{ $media->getUrl() }}" target="_blank" style="display: inline-block">
+                                        <img src="{{ $media->getUrl('thumb') }}">
+                                    </a>
+                                @endforeach
+                            </td>
+                            <td>
+                                {{ $destino->nombre_eje ?? '' }}
                             </td>
                             <td>
                                 @can('destino_show')

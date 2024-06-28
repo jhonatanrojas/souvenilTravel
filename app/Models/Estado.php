@@ -22,6 +22,8 @@ class Estado extends Model
     protected $fillable = [
         'codigoestado',
         'nombre',
+        'orden',
+        'descripcion',
         'created_at',
         'updated_at',
         'deleted_at',

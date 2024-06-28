@@ -1,7 +1,7 @@
 <?php
 
 use App\Http\Controllers\Frontend\ClientesController;
-
+use App\Http\Controllers\EmailController; 
 Route::get('/', 'HomeController@index')->name('home');
 Auth::routes(['register' => false]);
 
@@ -11,17 +11,26 @@ Route::prefix('cliente')->namespace('Frontend')->group(function () {
     Route::post('login', 'CustomAuthController@login')->name('login_cliente');
     Route::middleware('cliente')->group(function () {
         Route::get('perfil', 'ClientesController@perfilClientes')->name('perfilCliente');
-        Route::get('logout', 'CustomAuthController@logout')->name('logout');
+        Route::get('logout', 'CustomAuthController@logout')->name('logoutC');
     });
 });
 
 
 Route::group(['as' => '/', 'namespace' => 'Frontend' ], function () {
      Route::get('paquete-turistico/{id}', 'PaquetesController@show')->name('ver_paquete');
-     Route::get('paquetes-turisticos', 'PaquetesController@index')->name('lista_paquetes');
+     Route::get('paquetes-turisticos/{id_destino}/{id_categoria}', 'PaquetesController@index')->name('lista_paquetes');
+     
+     Route::get('listaCategorias/{id}', 'PaquetesController@listaCategorias')->name('listaCategorias'); 
+     Route::get('listCarrito', 'PaquetesController@listCarrito')->name('listCarrito');
+     Route::get('datosCarrito', 'PaquetesController@datosCarrito')->name('datosCarrito');
+     Route::post('registrarReserva', 'CartController@registrarReserva')->name('registrarReserva');
+     Route::get('reservaExitosa', 'CartController@reservaExitosa')->name('reservaExitosa');
+     
+
+     
  });
 
-
+ Route::post('/send-email', [EmailController::class, 'sendEmail']);
 Route::post('registrarCliente', [ClientesController::class , 'registrarCliente'])->name('registrarCliente');
 
 
@@ -48,6 +57,8 @@ Route::group(['prefix' => 'admin', 'as' => 'admin.', 'namespace' => 'Admin', 'mi
     Route::post('product-categories/ckmedia', 'ProductCategoryController@storeCKEditorImages')->name('product-categories.storeCKEditorImages');
     Route::resource('product-categories', 'ProductCategoryController');
 
+    Route::delete('sub-categoria/destroy', 'SubCategoriaController@massDestroy')->name('sub-categoria.massDestroy');
+    Route::resource('sub-categoria', 'SubCategoriaController');
     // Product Tag
     Route::delete('product-tags/destroy', 'ProductTagController@massDestroy')->name('product-tags.massDestroy');
     Route::resource('product-tags', 'ProductTagController');
@@ -73,6 +84,8 @@ Route::group(['prefix' => 'admin', 'as' => 'admin.', 'namespace' => 'Admin', 'mi
     Route::delete('destinos/destroy', 'DestinosController@massDestroy')->name('destinos.massDestroy');
     Route::resource('destinos', 'DestinosController');
 
+    Route::post('destinos/media', 'DestinosController@storeMedia')->name('destinos.storeMedia');
+    Route::post('destinos/ckmedia', 'DestinosController@storeCKEditorImages')->name('destinos.storeCKEditorImages');
     // User Alerts
     Route::delete('user-alerts/destroy', 'UserAlertsController@massDestroy')->name('user-alerts.massDestroy');
     Route::get('user-alerts/read', 'UserAlertsController@read');

@@ -37,6 +37,20 @@
                 @endif
                 <span class="help-block">{{ trans('cruds.product.fields.name_helper') }}</span>
             </div>
+
+            <div class="form-group">
+                <label class="required" for="resumen">{{ trans('Resumen') }}</label>
+                <input class="form-control {{ $errors->has('resumen') ? 'is-invalid' : '' }}" type="text" name="resumen" id="resumen" value="{{ old('resumen', '') }}" >
+                @if($errors->has('resumen'))
+                    <div class="invalid-feedback">
+                        {{ $errors->first('resumen') }}
+                    </div>
+                @endif
+                <span class="help-block">{{ trans('cruds.product.fields.name_helper') }}</span>
+            </div>
+
+
+
             <div class="form-group">
                 <label for="description">{{ trans('cruds.product.fields.description') }}</label>
                 <textarea class="form-control ckeditor {{ $errors->has('description') ? 'is-invalid' : '' }}" name="description" id="description">{!! old('description') !!}</textarea>
@@ -225,6 +239,20 @@
                     </div>
                 @endif
                 <span class="help-block">{{ trans('cruds.product.fields.category_helper') }}</span>
+            </div>
+            <div class="form-group">
+                <label for="sub_categoria_id">{{ trans('cruds.product.fields.sub_categoria') }}</label>
+                <select class="form-control select2 {{ $errors->has('sub_categoria') ? 'is-invalid' : '' }}" name="sub_categoria_id" id="sub_categoria_id">
+                    @foreach($sub_categorias as $id => $entry)
+                        <option value="{{ $id }}" {{ old('sub_categoria_id') == $id ? 'selected' : '' }}>{{ $entry }}</option>
+                    @endforeach
+                </select>
+                @if($errors->has('sub_categoria'))
+                    <div class="invalid-feedback">
+                        {{ $errors->first('sub_categoria') }}
+                    </div>
+                @endif
+                <span class="help-block">{{ trans('cruds.product.fields.sub_categoria_helper') }}</span>
             </div>
             <div class="form-group">
                 <button class="btn btn-danger" type="submit">

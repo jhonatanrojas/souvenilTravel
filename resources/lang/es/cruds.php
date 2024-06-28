@@ -129,7 +129,7 @@ return [
             'deleted_at_helper'         => ' ',
             'estado'                    => 'Estado',
             'estado_helper'             => ' ',
-            'destino'                   => 'Destino',
+            'destino'                   => 'Ejes Turisticos',
             'destino_helper'            => ' ',
             'direccion'                 => 'Direccion',
             'direccion_helper'          => ' ',
@@ -151,6 +151,24 @@ return [
             'category_helper'           => ' ',
             'estatus'                   => 'estatus',
             'estatus_helper'            => ' ',
+        ],
+    ],
+    'subCategorium' => [
+        'title'          => 'Sub Categoria',
+        'title_singular' => 'Sub Categorium',
+        'fields'         => [
+            'id'                => 'ID',
+            'id_helper'         => ' ',
+            'categoria'         => 'Categoria',
+            'categoria_helper'  => ' ',
+            'nombre'            => 'Nombre',
+            'nombre_helper'     => ' ',
+            'created_at'        => 'Created at',
+            'created_at_helper' => ' ',
+            'updated_at'        => 'Updated at',
+            'updated_at_helper' => ' ',
+            'deleted_at'        => 'Deleted at',
+            'deleted_at_helper' => ' ',
         ],
     ],
     'prestadoresDeServicio' => [
@@ -230,7 +248,7 @@ return [
         ],
     ],
     'destino' => [
-        'title'          => 'Destinos',
+        'title'          => 'Ejes Turisticos',
         'title_singular' => 'Destino',
         'fields'         => [
             'id'                      => 'ID',

@@ -13,6 +13,7 @@ use App\Models\PrestadoresDeServicio;
 use App\Models\Product;
 use App\Models\ProductCategory;
 use App\Models\ProductTag;
+use App\Models\SubCategorium;
 use Gate;
 use Illuminate\Http\Request;
 use Spatie\MediaLibrary\MediaCollections\Models\Media;
@@ -44,8 +45,8 @@ class ProductController extends Controller
         $tags = ProductTag::pluck('name', 'id');
 
         $categories = ProductCategory::pluck('name', 'id')->prepend(trans('global.pleaseSelect'), '');
-
-        return view('admin.products.create', compact('categories', 'destinos', 'estados', 'prestador_servicios', 'tags'));
+        $sub_categorias = SubCategorium::pluck('nombre', 'id')->prepend(trans('global.pleaseSelect'), '');
+        return view('admin.products.create', compact('categories', 'destinos', 'estados', 'prestador_servicios', 'tags','sub_categorias'));
     }
 
     public function store(StoreProductRequest $request)
@@ -75,12 +76,13 @@ class ProductController extends Controller
         $destinos = Destino::pluck('nombre', 'id')->prepend(trans('global.pleaseSelect'), '');
 
         $tags = ProductTag::pluck('name', 'id');
+        $sub_categorias = SubCategorium::pluck('nombre', 'id')->prepend(trans('global.pleaseSelect'), '');
 
         $categories = ProductCategory::pluck('name', 'id')->prepend(trans('global.pleaseSelect'), '');
 
         $product->load('prestador_servicios', 'estado', 'destino', 'tags', 'category');
 
-        return view('admin.products.edit', compact('categories', 'destinos', 'estados', 'prestador_servicios', 'product', 'tags'));
+        return view('admin.products.edit', compact('categories', 'destinos', 'estados','sub_categorias', 'prestador_servicios', 'product', 'tags'));
     }
 
     public function update(UpdateProductRequest $request, Product $product)

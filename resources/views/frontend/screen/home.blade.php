@@ -1,12 +1,13 @@
 @extends('frontend.layout')
 
+
 {{--  block_main_content_center  --}}
 @section('block_main_content_center')
-@push('css')
-<link href="{{ asset('layerslider/css/layerslider.css') }}" rel="stylesheet">
-@endpush
 
+
+@endsection
 @push('scripts')
+
 <script src="{{ asset('layerslider/js/greensock.js') }}"></script>
 <script src="{{ asset('layerslider/js/layerslider.transitions.js') }}"></script>
 <script src="{{ asset('layerslider/js/layerslider.kreaturamedia.jquery.js') }}"></script>
@@ -26,4 +27,3 @@
 </script>
 
 @endpush
-@endsection

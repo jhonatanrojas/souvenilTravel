@@ -47,6 +47,26 @@
                             {{ $destino->nombre }}
                         </td>
                     </tr>
+                    <tr>
+                        <th>
+                            {{ trans('cruds.destino.fields.fhotos') }}
+                        </th>
+                        <td>
+                            @foreach($destino->fhotos as $key => $media)
+                                <a href="{{ $media->getUrl() }}" target="_blank" style="display: inline-block">
+                                    <img src="{{ $media->getUrl('thumb') }}">
+                                </a>
+                            @endforeach
+                        </td>
+                    </tr>
+                    <tr>
+                        <th>
+                            {{ trans('cruds.destino.fields.nombre_eje') }}
+                        </th>
+                        <td>
+                            {{ $destino->nombre_eje }}
+                        </td>
+                    </tr>
                 </tbody>
             </table>
             <div class="form-group">

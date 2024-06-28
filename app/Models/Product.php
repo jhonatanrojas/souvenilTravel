@@ -32,6 +32,7 @@ class Product extends Model implements HasMedia
     protected $fillable = [
         'name',
         'description',
+        'resumen',
         'estado_id',
         'nro_adultos',
         'nro_ninos',
@@ -45,6 +46,7 @@ class Product extends Model implements HasMedia
         'latitud',
         'logitud',
         'category_id',
+        'sub_categoria_id',
         'created_at',
         'updated_at',
         'deleted_at',
