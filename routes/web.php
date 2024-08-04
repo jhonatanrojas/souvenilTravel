@@ -12,8 +12,12 @@ Route::prefix('cliente')->namespace('Frontend')->group(function () {
     Route::middleware('cliente')->group(function () {
         Route::get('perfil', 'ClientesController@perfilClientes')->name('perfilCliente');
         Route::get('logout', 'CustomAuthController@logout')->name('logoutC');
+       
     });
+
 });
+
+
 
 
 Route::group(['as' => '/', 'namespace' => 'Frontend' ], function () {
