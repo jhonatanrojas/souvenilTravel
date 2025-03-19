@@ -8,7 +8,7 @@ use App\Http\Requests\MassDestroyBannerRequest;
 use App\Http\Requests\StoreBannerRequest;
 use App\Http\Requests\UpdateBannerRequest;
 use App\Models\Banner;
-use Gate;
+//use Gate;
 use Illuminate\Http\Request;
 use Spatie\MediaLibrary\MediaCollections\Models\Media;
 use Symfony\Component\HttpFoundation\Response;
@@ -39,9 +39,31 @@ class BannersController extends Controller
 
 
 
-
-
     public function store(StoreBannerRequest $request)
+    {
+        // Usar una transacción para garantizar la consistencia de los datos en caso de errores
+        DB::transaction(function () use ($request) {
+            // Crear el banner con los datos validados
+            $banner = Banner::create($request->validated());
+
+            // Manejar la imagen si existe
+            if ($request->filled('imagen')) {
+                $banner->addMediaFromPath(
+                    storage_path('tmp/uploads/' . basename($request->input('imagen')))
+                )->toMediaCollection('imagen');
+            }
+
+            // Asociar archivos multimedia CKEditor si existen
+            if ($mediaIds = $request->input('ck-media')) {
+                Media::whereIn('id', $mediaIds)->update(['model_id' => $banner->id]);
+            }
+        });
+
+        return redirect()->route('admin.banners.index')->with('success', 'Banner creado exitosamente.');
+    }
+
+
+   /* public function store(StoreBannerRequest $request)
     {
 
 
@@ -57,7 +79,7 @@ class BannersController extends Controller
         }
 
         return redirect()->route('admin.banners.index');
-    }
+    }*/
 
     public function edit(Banner $banner)
     {
