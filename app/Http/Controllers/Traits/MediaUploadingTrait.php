@@ -9,8 +9,6 @@ trait MediaUploadingTrait
     public function storeMedia(Request $request)
     {
 
-       dd($request->all());
-        exit();
 
         // Validates file size
         if (request()->has('size')) {
