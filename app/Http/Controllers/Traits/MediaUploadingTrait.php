@@ -10,7 +10,8 @@ trait MediaUploadingTrait
     {
 
         Log::info('Inicio de storeMedia', ['request' => $request->all()]);
-        
+        exit();
+
         // Validates file size
         if (request()->has('size')) {
             $this->validate(request(), [
