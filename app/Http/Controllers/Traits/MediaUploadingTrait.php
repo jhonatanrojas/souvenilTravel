@@ -9,7 +9,7 @@ trait MediaUploadingTrait
     public function storeMedia(Request $request)
     {
 
-        Log::info('Inicio de storeMedia', ['request' => $request->all()]);
+       dd($request->all());
         exit();
 
         // Validates file size
