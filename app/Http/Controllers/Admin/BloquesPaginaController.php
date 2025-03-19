@@ -37,6 +37,8 @@ class BloquesPaginaController extends Controller
     {
         $bloquesPagina = BloquesPagina::create($request->all());
 
+
+
         if ($media = $request->input('ck-media', false)) {
             Media::whereIn('id', $media)->update(['model_id' => $bloquesPagina->id]);
         }
@@ -87,7 +89,7 @@ class BloquesPaginaController extends Controller
 
     public function storeCKEditorImages(Request $request)
     {
-        abort_if(Gate::denies('bloques_pagina_create') && Gate::denies('bloques_pagina_edit'), Response::HTTP_FORBIDDEN, '403 Forbidden');
+     //   abort_if(Gate::denies('bloques_pagina_create') && Gate::denies('bloques_pagina_edit'), Response::HTTP_FORBIDDEN, '403 Forbidden');
 
         $model         = new BloquesPagina();
         $model->id     = $request->input('crud_id', 0);
