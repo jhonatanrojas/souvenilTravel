@@ -254,11 +254,9 @@
 
 @section('scripts')
 <script>
-    $(document).ready(function () {
 
 
-
-    function loadSubCategories(categoryId) {
+function loadSubCategories(categoryId) {
         $.ajax({
             type: 'GET',
             url: '/admin/subcategorias/' + categoryId,
@@ -270,6 +268,12 @@
             }
         });
     }
+    
+    $(document).ready(function () {
+
+
+
+
 
 
 
