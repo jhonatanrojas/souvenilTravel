@@ -37,7 +37,6 @@ Route::group(['as' => '/', 'namespace' => 'Frontend' ], function () {
  Route::post('/send-email', [EmailController::class, 'sendEmail']);
 Route::post('registrarCliente', [ClientesController::class , 'registrarCliente'])->name('registrarCliente');
 
-Route::get('admin/subcategorias/{categoryId}', 'ProductController@getSubCategories')->name('product.listsubcategories');
 
 
 Route::group(['prefix' => 'admin', 'as' => 'admin.', 'namespace' => 'Admin', 'middleware' => ['auth', 'admin']], function () {
@@ -60,6 +59,8 @@ Route::group(['prefix' => 'admin', 'as' => 'admin.', 'namespace' => 'Admin', 'mi
     Route::post('product-categories/media', 'ProductCategoryController@storeMedia')->name('product-categories.storeMedia');
     Route::post('product-categories/ckmedia', 'ProductCategoryController@storeCKEditorImages')->name('product-categories.storeCKEditorImages');
     Route::resource('product-categories', 'ProductCategoryController');
+
+    Route::get('subcategorias/{categoryId}', 'ProductController@getSubCategories')->name('product.listsubcategories');
 
     Route::delete('sub-categoria/destroy', 'SubCategoriaController@massDestroy')->name('sub-categoria.massDestroy');
     Route::resource('sub-categoria', 'SubCategoriaController');
