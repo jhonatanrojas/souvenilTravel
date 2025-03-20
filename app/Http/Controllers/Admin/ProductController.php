@@ -147,4 +147,11 @@ class ProductController extends Controller
 
         return response()->json(['id' => $media->id, 'url' => $media->getUrl()], Response::HTTP_CREATED);
     }
+
+    public function getSubCategories($categoryId)
+    {
+        $subCategories = SubCategorium::where('category_id', $categoryId)->get();
+        return response()->json($subCategories);
+    }
+    
 }

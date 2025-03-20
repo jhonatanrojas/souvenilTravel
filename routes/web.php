@@ -1,7 +1,7 @@
 <?php
 
 use App\Http\Controllers\Frontend\ClientesController;
-use App\Http\Controllers\EmailController; 
+use App\Http\Controllers\EmailController;
 Route::get('/', 'HomeController@index')->name('home');
 Auth::routes(['register' => false]);
 
@@ -12,7 +12,7 @@ Route::prefix('cliente')->namespace('Frontend')->group(function () {
     Route::middleware('cliente')->group(function () {
         Route::get('perfil', 'ClientesController@perfilClientes')->name('perfilCliente');
         Route::get('logout', 'CustomAuthController@logout')->name('logoutC');
-       
+
     });
 
 });
@@ -23,15 +23,15 @@ Route::prefix('cliente')->namespace('Frontend')->group(function () {
 Route::group(['as' => '/', 'namespace' => 'Frontend' ], function () {
      Route::get('paquete-turistico/{id}', 'PaquetesController@show')->name('ver_paquete');
      Route::get('paquetes-turisticos/{id_destino}/{id_categoria}', 'PaquetesController@index')->name('lista_paquetes');
-     
-     Route::get('listaCategorias/{id}', 'PaquetesController@listaCategorias')->name('listaCategorias'); 
+
+     Route::get('listaCategorias/{id}', 'PaquetesController@listaCategorias')->name('listaCategorias');
      Route::get('listCarrito', 'PaquetesController@listCarrito')->name('listCarrito');
      Route::get('datosCarrito', 'PaquetesController@datosCarrito')->name('datosCarrito');
      Route::post('registrarReserva', 'CartController@registrarReserva')->name('registrarReserva');
      Route::get('reservaExitosa', 'CartController@reservaExitosa')->name('reservaExitosa');
-     
 
-     
+
+
  });
 
  Route::post('/send-email', [EmailController::class, 'sendEmail']);
@@ -53,7 +53,7 @@ Route::group(['prefix' => 'admin', 'as' => 'admin.', 'namespace' => 'Admin', 'mi
     Route::delete('users/destroy', 'UsersController@massDestroy')->name('users.massDestroy');
     Route::resource('users', 'UsersController');
 
-   
+    Route::get('subcategorias/{categoryId}', 'ProductController@getSubCategories');
 
     // Product Category
     Route::delete('product-categories/destroy', 'ProductCategoryController@massDestroy')->name('product-categories.massDestroy');
