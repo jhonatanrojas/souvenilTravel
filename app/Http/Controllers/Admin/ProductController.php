@@ -150,7 +150,7 @@ class ProductController extends Controller
 
     public function getSubCategories($categoryId)
     {
-        $subCategories = SubCategorium::where('id', $categoryId)->get();
+        $subCategories = SubCategorium::where('categoria_id', $categoryId)->get();
         return response()->json($subCategories);
     }
 
