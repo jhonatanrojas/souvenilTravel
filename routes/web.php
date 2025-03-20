@@ -53,13 +53,13 @@ Route::group(['prefix' => 'admin', 'as' => 'admin.', 'namespace' => 'Admin', 'mi
     Route::delete('users/destroy', 'UsersController@massDestroy')->name('users.massDestroy');
     Route::resource('users', 'UsersController');
 
-    Route::get('subcategorias/{categoryId}', 'ProductController@getSubCategories');
 
     // Product Category
     Route::delete('product-categories/destroy', 'ProductCategoryController@massDestroy')->name('product-categories.massDestroy');
     Route::post('product-categories/media', 'ProductCategoryController@storeMedia')->name('product-categories.storeMedia');
     Route::post('product-categories/ckmedia', 'ProductCategoryController@storeCKEditorImages')->name('product-categories.storeCKEditorImages');
     Route::resource('product-categories', 'ProductCategoryController');
+    Route::get('subcategorias/{categoryId}', 'ProductController@getSubCategories');
 
     Route::delete('sub-categoria/destroy', 'SubCategoriaController@massDestroy')->name('sub-categoria.massDestroy');
     Route::resource('sub-categoria', 'SubCategoriaController');
