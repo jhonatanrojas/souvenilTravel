@@ -259,7 +259,7 @@
 function loadSubCategories(categoryId) {
         $.ajax({
             type: 'GET',
-            url: '{{ route('product.listsubcategories') }}' + categoryId,
+            url: '{{ route('admin.product.listsubcategories') }}' + categoryId,
             success: function(data) {
                 $('#sub_categoria_id').empty();
                 $.each(data, function(index, value) {
