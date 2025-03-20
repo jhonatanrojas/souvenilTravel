@@ -4,7 +4,7 @@
 <div class="card">
     <div class="card-header">
         {{ trans('global.create') }} {{ trans('cruds.product.title_singular') }}
-    </div> 
+    </div>
 
     <div class="card-body">
         <form method="POST" action="{{ route("admin.products.store") }}" enctype="multipart/form-data">
@@ -224,11 +224,11 @@
                         {{ $errors->first('destacado') }}
                     </div>
                 @endif
-        
+
             </div>
             <div class="form-group">
                 <label for="category_id">{{ trans('cruds.product.fields.category') }}</label>
-                <select class="form-control select2 {{ $errors->has('category') ? 'is-invalid' : '' }}" name="category_id" id="category_id">
+                <select class="form-control select2 {{ $errors->has('category') ? 'is-invalid' : '' }}" name="category_id" id="category_id" onchange="loadSubCategories(this.value)">
                     @foreach($categories as $id => $entry)
                         <option value="{{ $id }}" {{ old('category_id') == $id ? 'selected' : '' }}>{{ $entry }}</option>
                     @endforeach
@@ -269,6 +269,20 @@
 
 @section('scripts')
 <script>
+
+
+function loadSubCategories(categoryId) {
+        $.ajax({
+            type: 'GET',
+            url: '/admin/subcategorias/' + categoryId,
+            success: function(data) {
+                $('#sub_categoria_id').empty();
+                $.each(data, function(index, value) {
+                    $('#sub_categoria_id').append('<option value="' + value.id + '">' + value.nombre + '</option>');
+                });
+            }
+        });
+    }
     $(document).ready(function () {
   function SimpleUploadAdapter(editor) {
     editor.plugins.get('FileRepository').createUploadAdapter = function(loader) {
