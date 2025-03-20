@@ -59,7 +59,7 @@ Route::group(['prefix' => 'admin', 'as' => 'admin.', 'namespace' => 'Admin', 'mi
     Route::post('product-categories/media', 'ProductCategoryController@storeMedia')->name('product-categories.storeMedia');
     Route::post('product-categories/ckmedia', 'ProductCategoryController@storeCKEditorImages')->name('product-categories.storeCKEditorImages');
     Route::resource('product-categories', 'ProductCategoryController');
-    Route::get('subcategorias/{categoryId}', 'ProductController@getSubCategories');
+    Route::get('subcategorias/{categoryId}', 'ProductController@getSubCategories')->name('product.listsubcategories');
 
     Route::delete('sub-categoria/destroy', 'SubCategoriaController@massDestroy')->name('sub-categoria.massDestroy');
     Route::resource('sub-categoria', 'SubCategoriaController');

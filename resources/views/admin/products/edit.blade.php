@@ -259,7 +259,7 @@
 function loadSubCategories(categoryId) {
         $.ajax({
             type: 'GET',
-            url: '/admin/subcategorias/' + categoryId,
+            url: '{{ route('product.listsubcategories') }}' + categoryId,
             success: function(data) {
                 $('#sub_categoria_id').empty();
                 $.each(data, function(index, value) {
@@ -268,7 +268,7 @@ function loadSubCategories(categoryId) {
             }
         });
     }
-    
+
     $(document).ready(function () {
 
 
