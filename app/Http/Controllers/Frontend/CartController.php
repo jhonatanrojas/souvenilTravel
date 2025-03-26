@@ -51,7 +51,7 @@ class CartController extends Controller
             'tasa_de_cambio' => '1',
             'fecha_reserva' => date('d-m-Y'),
             'cliente_id' => $cliente->id,
-            'prestado_de_servicio_id' => 2,
+            'prestado_de_servicio_id' => 1,
             'estatus_reserva_id' => 1
         ];
         $reserva = Reserva::create($data);
